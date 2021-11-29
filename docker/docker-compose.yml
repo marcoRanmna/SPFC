@@ -2,13 +2,19 @@ version: "3"
 
 services:
   db:
-    image: mysql:latest
-    container_name: "SpareParts"
+    build: .
+    container_name: "SPCFcon"
     ports:
       - "3307:3306"
     cap_add:
       - SYS_NICE
-    environment:
-      MYSQL_ROOT_PASSWORD: SP123
+    volumes:
+      - volumedb:/vol
 
-
+volumes:
+  volumedb:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/victor/Documents/SPFC/application/dll/repository/dbvolume
