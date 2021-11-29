@@ -10,3 +10,5 @@ services:
       - SYS_NICE
     environment:
       MYSQL_ROOT_PASSWORD: SP123
+
+

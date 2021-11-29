@@ -379,7 +379,7 @@ CREATE TABLE IF NOT EXISTS `SPFCdb`.`Suppliers` (
   `phone` VARCHAR(45) NOT NULL,
   `country` VARCHAR(45) NOT NULL,
   `zipcode` VARCHAR(45) NOT NULL,
-  `city` VARCHAR(45) CHARACTER SET 'binary' NOT NULL,
+  `city` VARCHAR(45) NOT NULL,
   `adress` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`idSuppliers`))
 ENGINE = InnoDB;
