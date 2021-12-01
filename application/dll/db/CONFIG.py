@@ -1,4 +1,4 @@
 HOST = "***.***.***.***"
 PORT = "3307"
-USER = "oscar"
+USER = "root"
 PASSWORD = "password"
