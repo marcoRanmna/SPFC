@@ -17,4 +17,5 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: C:\Teknikhögskolan\SpareParts\PyCharm\application\dll\repository\dbvolume
+      device: /home/hyde/Documents/SPFC/application/dll/repository/dbvolume
+
