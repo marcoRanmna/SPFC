@@ -1,16 +1,11 @@
-def menu():
-    print("Welcome to the Spare Parts Shop")
-    print()
-    print("1. Orders")
-    print("2. Products")
-    print("3. Manufacturers")
-    print("4. Suppliers")
-    print("5. Customers")
-    print()
-    print("9. Quit")
+def menu(menu_user_choice: dict):
+    print("="*5+"Welcome to the Spare Parts Shop"+"="*5+"\n")
+    print("What would you like to do?")
+    for choice in menu_user_choice:
+        print(f"{choice}. {menu_user_choice[choice]}")
+
     while True:
         pick = input("> ")
-        if pick in "123459":
-            break
-        print("Valid options are 1, 2, 3, or 9")
-    return pick
+        if pick.isdigit() and int(pick) in menu_user_choice:
+            return int(pick)
+        print("Valid options are {}\n".format(", ".join([str(key) for key in menu_user_choice])))
