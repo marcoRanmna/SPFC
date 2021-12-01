@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, VARCHAR
 from sqlalchemy.orm import relationship
 
-from db import Base
+from application.dll.db.db import Base
 
 
 class PrivatePerson(Base):

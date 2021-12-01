@@ -2,7 +2,7 @@ from sqlalchemy import Column, Integer, DATE, ForeignKey
 from sqlalchemy.orm import relationship
 
 from application.dll.models.private_customer import PrivatePerson
-from db import Base
+from application.dll.db.db import Base
 
 
 class Costumer(Base):
