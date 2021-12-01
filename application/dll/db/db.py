@@ -1,12 +1,8 @@
 import sqlalchemy
 from CONFIG import *
-from sqlalchemy import text
 from sqlalchemy.orm import declarative_base, sessionmaker
 
-engine = sqlalchemy.create_engine(f"mysql+mysqlconnector://{USER}:{PASSWORD}@{HOST}:{PORT}/SPFCdb", echo=True)
-
-with engine.connect() as conn:
-    print(conn.scalar(text("select 'hi'")))
+engine = sqlalchemy.create_engine(f"mysql+mysqlconnector://{USER}:{PASSWORD}@{HOST}:{PORT}/SPFCdb")
 
 Base = declarative_base()
 Session = sessionmaker()
