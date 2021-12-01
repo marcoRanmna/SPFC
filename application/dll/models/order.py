@@ -7,7 +7,7 @@ class Order(Base):
     __tablename__ = 'Orders'
 
     idOrders = Column(Integer, primary_key=True, autoincrement=True)
-    Customers_idCustomers = Column(Integer, primary_key=True, ForeignKey('Customers.idCustomers'), nullable=False)
+    Customers_idCustomers = Column(Integer, primary_key=True, ForeignKey('Customers_idCustomers'), nullable=False)
     purchase_date = Column(DateTime, nullable=False)
     requireddate = Column(Date)
     shippeddate = Column(Date)
@@ -15,4 +15,4 @@ class Order(Base):
     comments = Column(Text)
 
     def __repr__(self):
-        return f'{self.first_name} {self.last_name}, {self.email}'
+        return f'{self.purchase_date} {self.status}, {self.idOrders}'
