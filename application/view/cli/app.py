@@ -19,6 +19,8 @@ def main():
 
     while True:
         menu_pick = menu(menu_choice)
+        if menu_choice[menu_pick] == 'Quit':
+            return 0
 
         for ops in menu_operations:
             print(f"{ops}.", menu_operations[ops], menu_choice[menu_pick])
@@ -28,8 +30,6 @@ def main():
             run = menu_func[menu_choice[menu_pick]][int(pick)-1]
             if not run is None:
                 run()
-            elif run == 'Quit':
-                return 0
         break
 
 if __name__ == '__main__':
