@@ -1,5 +1,5 @@
 import sqlalchemy
-from CONFIG import *
+from application.dll.db.CONFIG import *
 from sqlalchemy.orm import declarative_base, sessionmaker
 
 engine = sqlalchemy.create_engine(f"mysql+mysqlconnector://{USER}:{PASSWORD}@{HOST}:{PORT}/SPFCdb")
