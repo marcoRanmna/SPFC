@@ -1,5 +1,5 @@
 from application.dll.models.product import Product
-from db import session
+from application.dll.db.db import session
 
 
 def get_all_products():
