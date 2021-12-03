@@ -1,5 +1,6 @@
 from application.bll.orders_controller import get_all_orders
 
+
 def view_orders():
     orders = get_all_orders()
     print("***********")
