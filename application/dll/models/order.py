@@ -15,4 +15,4 @@ class Order(Base):
     comments = Column(Text)
 
     def __repr__(self):
-        return f'{self.purchase_date} {self.status}, {self.idOrders}'
+        return f'{self.purchase_date} {self.requireddate}, {self.shippeddate}, {self.status}, {self.comments}'
