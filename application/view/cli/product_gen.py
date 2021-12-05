@@ -1,3 +1,5 @@
+import csv
+from os import path
 from application.bll.product_controller import get_all_products, create_products
 
 
@@ -11,11 +13,34 @@ def view_product():
         print(product)
 
 
-def add_products():
-    product = {
-        'product_name': '',
-        'product_number': '',
-        'description': '',
-        'sell_price': ''
-    }
+def add_products(product):
+    #product = {
+    #    'product_name': '',
+    #    'product_number': '',
+    #    'description': '',
+    #    'sell_price': ''
+    #}
     create_products(product)
+
+def test_add_products():
+    dir_path = "/home/victor/Documents/SPFC/application/dll/repository/dbvolume/"
+    file_product = dir_path + "product.csv"
+    print(file_product, path.exists(file_product))
+
+    with open(file_product, 'r', encoding='utf-8') as csvfile:
+        csv_reader = csv.reader(csvfile)
+        next(csv_reader)
+        product_list = next(csv_reader)
+
+    print(product_list)
+    product = {
+        'product_name': product_list[0],
+        'product_number': product_list[1],
+        'description': 'Car Battery',
+        'sell_price': int(product_list[-1])
+    }
+    print(product)
+    add_products(product)
+
+if __name__ == '__main__':
+    test_add_products()
