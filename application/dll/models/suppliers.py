@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, ForeignKey
 
-from db import Base
+from application.dll.db.db import Base
 
 
 class Supplier(Base):
