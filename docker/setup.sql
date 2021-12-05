@@ -78,7 +78,7 @@ CREATE TABLE IF NOT EXISTS `SPFCdb`.`Products` (
   `idProducts` INT NOT NULL,
   `product_name` VARCHAR(100) NOT NULL,
   `product_number` CHAR(10) NOT NULL,
-  `description` MEDIUMTEXT NULL,
+  `description` VARCHAR(500) NULL,
   `sell_price` FLOAT NOT NULL,
   `product_stored_idproduct_stored` INT NOT NULL,
   `component_model_idcomponent_model` INT NOT NULL,
