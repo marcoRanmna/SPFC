@@ -1,4 +1,4 @@
-from application.bll.company_contact_employees_controller import get_all_company_contact_employees
+from application.bll.company_contact_employees_controller import get_all_company_contact_employees, create_company_contact_employees
 
 
 def view_company_contact_employees():
@@ -11,8 +11,14 @@ def view_company_contact_employees():
         print(cce)
 
 
-def add_company_contact_employee():
-    pass
+def add_company_contact_employees():
+    company_contact_employees = {
+        'first_name': '',
+        'last_name': '',
+        'phone': '',
+        'email': ''
+    }
+    create_company_contact_employees(company_contact_employees)
 
 
 def delete_company_contact_employee():

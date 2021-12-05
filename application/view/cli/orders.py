@@ -1,4 +1,4 @@
-from application.bll.orders_controller import get_all_orders
+from application.bll.orders_controller import get_all_orders, create_orders
 
 
 def view_orders():
@@ -11,8 +11,15 @@ def view_orders():
         print(order)
 
 
-def add_order():
-    pass
+def add_orders():
+    orders = {
+        'purchase_date': '',
+        'requireddate': '',
+        'shippeddate': '',
+        'status': '',
+        'comments': ''
+    }
+    create_orders(orders)
 
 
 def delete_record():
