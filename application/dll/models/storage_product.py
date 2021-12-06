@@ -2,6 +2,7 @@ from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
 from application.dll.db.db import Base
 
+
 class Storage(Base):
     __tablename__ = "Storage"
 
@@ -16,6 +17,7 @@ class Storage(Base):
     def __repr__(self):
         return f"{self.country}, {self.state}, {self.city}, {self.zipcode}, {self.address}"
 
+
 class Product_Stored(Base):
     __tablename__ = "product_stored"
 
@@ -29,4 +31,4 @@ class Product_Stored(Base):
     product = relationship("Product", back_populates="product_stored")
 
     def __repr__(self):
-        return f"{product_stored}, limit {product_min_limit} {product_max_limit}"
+        return f"{self.product_stored}, limit {self.product_min_limit} {self.product_max_limit}"

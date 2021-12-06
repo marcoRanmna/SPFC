@@ -17,6 +17,7 @@ class Product(Base):
 
     product_stored = relationship('Product_Stored', back_populates='product')
     component_model = relationship('CarModel', back_populates='product')
+    suppliers = relationship('Supplier', back_populates='product')
 
     def __repr__(self):
         return f'{self.idProducts},{self.product_name}, {self.product_number}, {self.description}, {self.sell_price}'

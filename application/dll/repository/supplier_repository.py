@@ -1,5 +1,5 @@
 from application.dll.models.suppliers import Supplier
-from db import session
+from application.dll.db.db import session
 
 
 def get_all_suppliers():
@@ -7,6 +7,8 @@ def get_all_suppliers():
 
 
 def create_suppliers(supplier):
-    supplier = Supplier(**supplier)
+    # supplier = Supplier(**supplier)
+    print(supplier['company_name'], supplier['email'], supplier['phone'], supplier['country'], supplier['zipcode'], supplier['city'], supplier['adress'])
+    supplier = Supplier(company_name=supplier['company_name'], email=supplier['email'], phone=supplier['phone'], country=supplier['country'], zipcode=supplier['zipcode'], city=supplier['city'], adress=supplier['adress'])
     session.add(supplier)
     session.commit()
