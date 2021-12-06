@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String, Date, DateTime, Text, ForeignKey
-
+from sqlalchemy.orm import relationship
 from application.dll.db.db import Base
 
 
@@ -13,6 +13,9 @@ class Order(Base):
     shippeddate = Column(Date)
     status = Column(String(45), nullable=False)
     comments = Column(Text)
+
+    customers = relationship('Customer', back_populates='orders')
+    orderdetails = relationship('Orderdetail', back_populates='orders')
 
     def __repr__(self):
         return f'{self.purchase_date} {self.requireddate}, {self.shippeddate}, {self.status}, {self.comments}'
