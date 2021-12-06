@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, DateTime
 from sqlalchemy.orm import relationship
 
 from application.dll.db.db import Base
@@ -10,7 +10,7 @@ class CarModel(Base):
     idcomponent_model = Column(Integer, primary_key=True)
     car_brand = Column(String(45), nullable=False)
     car_model = Column(String(45), nullable=False)
-    car_model_year = Column(Year, nullable=True)
+    car_model_year = Column(DateTime, nullable=True)
     product = relationship('Product', backpopulates='component_model')
 
     def __repr__(self):
