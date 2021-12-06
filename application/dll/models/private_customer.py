@@ -13,5 +13,7 @@ class PrivatePerson(Base):
     phone = Column(String(45), nullable=False)
     email = Column(String(45), nullable=False)
 
+    customers = relationship('Customer', back_populates='private_persons')
+
     def __repr__(self):
         return f'{self.idprivate_person}, {self.first_name}, {self.last_name}, {self.phone}, {self.email}'
