@@ -18,7 +18,7 @@ class Storage(Base):
         return f"{self.country}, {self.state}, {self.city}, {self.zipcode}, {self.address}"
 
 
-class Product_Stored(Base):
+class ProductStored(Base):
     __tablename__ = "product_stored"
 
     idproduct_stored = Column(Integer, primary_key=True)
