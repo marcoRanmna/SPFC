@@ -12,8 +12,8 @@ class SupplierContactPerson(Base):
     phone = Column(String(45), nullable=False)
     email = Column(String(45), nullable=False)
 
-    Suppliers_idSuppliers = Column(Integer, ForeignKey('Suppliers_idSuppliers'))
-    suppliers = relationship('Suppliers', back_populates='supplier_contact_person')
+    Suppliers_idSuppliers = Column(Integer, ForeignKey('Suppliers.idSuppliers'))
+    suppliers = relationship('Supplier', back_populates='supplier_contact_person')
 
     def __repr__(self):
         return f'{self.idSupplier_contactperson},{self.first_name}, {self.last_name}, {self.phone}, {self.email}'

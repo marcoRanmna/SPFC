@@ -7,7 +7,7 @@ class CompanyContactEmployee(Base):
     __tablename__ = 'company_contact_employees'
 
     idcompany_contact_employees = Column(Integer, primary_key=True, autoincrement=True)
-    Company_idContactPersons = Column(Integer, ForeignKey('Company.idContactPerson'), nullable=False)
+    Company_idContactPersons = Column(Integer, ForeignKey('Company.idContactPerson'))
     first_name = Column(String(45), nullable=False)
     last_name = Column(String(45), nullable=False)
     phone = Column(String(45), nullable=False)
