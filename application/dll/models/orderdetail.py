@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String, ForeignKey, Float
-
+from sqlalchemy.orm import relationship
 from application.dll.db.db import Base
 
 
@@ -12,6 +12,8 @@ class Orderdetail(Base):
     price = Column(Float, nullable=False)
     Orders_idOrders = Column(Integer, ForeignKey('Orders.idOrders'), nullable=False)
     Orders_Customers_idCustomers = Column(Integer, ForeignKey('Orders.Customers.idCustomers'), nullable=False)
+
+    orders = relationship('Order', back_populates='orderdetails')
 
     def __repr__(self):
         return f'{self.product_number} {self.quantityordered}, {self.price}'

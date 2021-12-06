@@ -2,7 +2,8 @@ from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
 from application.dll.db.db import Base
 
-class Product_Stored(Base):
+
+class ProductStored(Base):
     __tablename__ = "product_stored"
 
     idproduct_stored = Column(Integer, primary_key=True)

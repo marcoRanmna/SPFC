@@ -11,11 +11,10 @@ class Product(Base):
     product_number = Column(CHAR(10), nullable=False, unique=True)
     description = Column(String(500), nullable=True)
     sell_price = Column(Float, nullable=False)
-
     product_stored_idproduct_stored = Column(Integer, ForeignKey('product_stored.idproduct_stored'))
     component_model_idcomponent_model = Column(Integer, ForeignKey('component_model.idcomponent_model'))
 
-    product_stored = relationship('Product_Stored', back_populates='product')
+    product_stored = relationship('ProductStored', back_populates='product')
     component_model = relationship('CarModel', back_populates='product')
     suppliers = relationship('Supplier', back_populates='product')
 

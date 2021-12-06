@@ -16,5 +16,7 @@ class Employee(Base):
 
     office = relationship("Office", back_populates="employees")
 
+    customers = relationship('Customer', back_populates='employees')
+
     def __repr__(self):
         return f'{self.first_name} {self.last_name}, {self.email}, {self.phone}, {self.Jobtitle}'
