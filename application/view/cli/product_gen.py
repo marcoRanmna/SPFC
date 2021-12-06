@@ -23,7 +23,7 @@ def add_products(product):
     create_products(product)
 
 def test_add_products():
-    dir_path = "/home/victor/Documents/SPFC/application/dll/repository/dbvolume/"
+    dir_path = "C:/Teknikhögskolan/SpareParts/PyCharm/application/dll/repository/dbvolume/"
     file_product = dir_path + "product.csv"
     print(file_product, path.exists(file_product))
 
