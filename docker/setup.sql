@@ -234,19 +234,12 @@ CREATE TABLE IF NOT EXISTS `SPFCdb`.`Employees` (
   `phone` VARCHAR(45) NOT NULL,
   `Jobtitle` VARCHAR(45) NULL,
   `offices_idoffices` INT NOT NULL,
-  `boss` INT NOT NULL,
   PRIMARY KEY (`idEmployees`),
   INDEX `fk_Employees_offices1_idx` (`offices_idoffices` ASC) VISIBLE,
-  INDEX `fk_Employees_Employees1_idx` (`boss` ASC) VISIBLE,
   UNIQUE INDEX `idEmployees_UNIQUE` (`idEmployees` ASC) VISIBLE,
   CONSTRAINT `fk_Employees_offices1`
     FOREIGN KEY (`offices_idoffices`)
     REFERENCES `SPFCdb`.`offices` (`idoffices`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Employees_Employees1`
-    FOREIGN KEY (`boss`)
-    REFERENCES `SPFCdb`.`Employees` (`idEmployees`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
