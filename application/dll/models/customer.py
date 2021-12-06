@@ -6,7 +6,7 @@ from application.dll.models.private_customer import PrivatePerson
 from application.dll.db.db import Base
 
 
-class Costumer(Base):
+class Customer(Base):
     __tablename__ = 'Customers'
 
     idCustomers = Column(Integer, primary_key=True)
@@ -18,6 +18,11 @@ class Costumer(Base):
     delivery_adress_iddelivery_adress = Column(Integer, ForeignKey('delivery_adress.iddelivery_adress'))
 
     delivery_addresses = relationship('Delivery_adress', back_populates='customers')
+    companies = relationship('Company', back_populates='customers')
+    orders = relationship('Order', back_populates='customers')
+    private_persons = relationship('PrivatePerson', back_populates='customers')
+    car_info = relationship('CarInfo', back_populates='customers')
+    employees = relationship('Employee', back_populates='customers')
 
     def __repr__(self):
         return f'{self.customer_id}, {self.created}'

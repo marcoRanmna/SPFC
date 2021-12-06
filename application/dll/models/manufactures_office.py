@@ -14,7 +14,7 @@ class ManufactureOffice(Base):
     zipcode = Column(String(45), nullable=False)
     state = Column(String(45), nullable=False)
 
-    Manufactures_idManufactures = Column(Integer, ForeignKey('Manufactures_idManufactures'))
+    Manufactures_idManufactures = Column(Integer, ForeignKey('Manufactures.idManufactures'))
     manufactures = relationship('Manufactures', back_populates='office')
 
     def __repr__(self):
