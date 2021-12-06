@@ -12,5 +12,7 @@ class Storage(Base):
     state = Column(String(45))
     country = Column(String(45))
 
+    office = relationship("Office", back_populates="storage")
+
     def __repr__(self):
         return f"{self.country}, {self.state}, {self.city}, {self.zipcode}, {self.address}"
