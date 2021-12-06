@@ -13,9 +13,9 @@ class ManufactureOffice(Base):
     country = Column(String(45), nullable=False)
     zipcode = Column(String(45), nullable=False)
     state = Column(String(45), nullable=False)
-
     Manufactures_idManufactures = Column(Integer, ForeignKey('Manufactures.idManufactures'))
-    manufactures = relationship('Manufactures', back_populates='office')
+
+    manufactures = relationship('Manufacture', back_populates='office')
 
     def __repr__(self):
         return f'{self.idManufactures},{self.company_name}, {self.number_head_office}'

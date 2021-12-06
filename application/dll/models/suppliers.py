@@ -17,6 +17,7 @@ class Supplier(Base):
     adress = Column(String(100), nullable=False)
 
     Products_idProducts = Column(Integer, ForeignKey('Products.idProducts'))
+
     product = relationship('Products', back_populates='suppliers')
     supplier_contact_person = relationship('SupplierContactPerson', back_populates='suppliers')
 

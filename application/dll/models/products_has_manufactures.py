@@ -11,5 +11,6 @@ class ProductHasManufacture(Base):
     Manufactures_idManufactures = Column(Integer, ForeignKey('Manufactures.idManufactures'), primary_key=True)
     purchase_price = Column(Float, nullable=False)
     quality_rating = Column(Integer, nullable=True)
-    manufacture = relationship('Manufacture', back_populates='product_has_manufacture')
+
+    manufactures = relationship('Manufacture', back_populates='product_has_manufacture')
     product = relationship('Product', back_populates='product_has_product')
