@@ -2,7 +2,7 @@ from sqlalchemy import Column, Integer, String, ForeignKey
 from application.dll.db.db import Base
 
 
-class CompanyContactEmployees(Base):
+class CompanyContactEmployee(Base):
     __tablename__ = 'company_contact_employees'
 
     idcompany_contact_employees = Column(Integer, primary_key=True, autoincrement=True)
