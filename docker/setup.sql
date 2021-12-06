@@ -234,7 +234,6 @@ CREATE TABLE IF NOT EXISTS `SPFCdb`.`Employees` (
   `phone` VARCHAR(45) NOT NULL,
   `Jobtitle` VARCHAR(45) NULL,
   `offices_idoffices` INT NOT NULL,
-  `boss` INT NOT NULL,
   PRIMARY KEY (`idEmployees`),
   INDEX `fk_Employees_offices1_idx` (`offices_idoffices` ASC) VISIBLE,
   UNIQUE INDEX `idEmployees_UNIQUE` (`idEmployees` ASC) VISIBLE,
