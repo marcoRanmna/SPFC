@@ -1,0 +1,9 @@
+from application.dll.repository import manufacture_contact_person_repository as manufacture_contact_person_r
+
+
+def get_all_manufacture_contact_person():
+    return manufacture_contact_person_r.get_all_manufacture_contact_person()
+
+
+def create_manufacture_contact_person(manufacture_contact_person):
+    manufacture_contact_person_r.create_manufacture_contact_person(manufacture_contact_person)

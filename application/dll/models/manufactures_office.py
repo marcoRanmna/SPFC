@@ -18,4 +18,4 @@ class ManufactureOffice(Base):
     manufactures = relationship('Manufactures', back_populates='office')
 
     def __repr__(self):
-        return f'{self.idManufactures},{self.company_name}, {self.number_head_office}'
+        return f'{self.idManufactures_offices},{self.phone}, {self.adress}, {self.country}, {self.zipcode}, {self.state}'
