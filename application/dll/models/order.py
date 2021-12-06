@@ -7,7 +7,7 @@ class Order(Base):
     __tablename__ = 'Orders'
 
     idOrders = Column(Integer, primary_key=True)
-    Customers_idCustomers = Column(Integer, primary_key=True, ForeignKey('Customers.idCustomers'), nullable=False)
+    Customers_idCustomers = Column(Integer, ForeignKey('Customers.idCustomers'), primary_key=True)
     purchase_date = Column(DateTime, nullable=False)
     requireddate = Column(Date)
     shippeddate = Column(Date)
