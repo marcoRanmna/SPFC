@@ -1,4 +1,5 @@
 from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy.orm import relationship
 
 from application.dll.db.db import Base
 
@@ -14,7 +15,10 @@ class Supplier(Base):
     zipcode = Column(String(45), nullable=False)
     city = Column(String(45), nullable=False)
     adress = Column(String(100), nullable=False)
-    idProducts = Column(Integer, ForeignKey('idProducts'))
+
+    Products_idProducts = Column(Integer, ForeignKey('Products_idProducts'))
+    product = relationship('Products', back_populates='suppliers')
+    supplier_contact_person = relationship('Supplier_contactperson', back_populates='suppliers')
 
     def __repr__(self):
         return f'{self.idSuppliers},{self.company_name}, {self.email}, {self.phone}, {self.country} {self.zipcode}, {self.adress}'
