@@ -10,10 +10,12 @@ class Manufacture(Base):
     idManufactures = Column(Integer, primary_key=True)
     company_name = Column(String(45), nullable=False, unique=True)
     number_head_office = Column(Integer, nullable=True)
+
     product_has_manufacture = relationship('ProductHasManufacture', back_populates='manufacture')
 
-    office = relationship('Manufactures_offices', backpopulates=',manufactures')
     contact_person = relationship('ManufactureContactPerson', backpopulates='manufactures')
+
+    office = relationship('ManufactureOffice', backpopulates='manufactures')
 
     def __repr__(self):
         return f'{self.idManufactures},{self.company_name}, {self.number_head_office}'
