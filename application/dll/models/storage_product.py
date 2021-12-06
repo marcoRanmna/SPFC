@@ -29,4 +29,4 @@ class Product_Stored(Base):
     product = relationship("Product", back_populates="product_stored")
 
     def __repr__(self):
-        return f"{product_stored}, limit {product_min_limit} {product_max_limit}"
+        return f"{self.product_stored}, limit {self.product_min_limit} {self.product_max_limit}"
