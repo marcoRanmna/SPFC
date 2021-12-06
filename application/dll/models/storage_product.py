@@ -2,7 +2,6 @@ from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
 from application.dll.db.db import Base
 
-<<<<<<< HEAD
 
 class Storage(Base):
     __tablename__ = "Storage"
@@ -17,8 +16,6 @@ class Storage(Base):
 
     def __repr__(self):
         return f"{self.country}, {self.state}, {self.city}, {self.zipcode}, {self.address}"
-=======
->>>>>>> edf61b4b57368b03e7216261aae58d57e35cc50a
 
 
 class Product_Stored(Base):
