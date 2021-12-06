@@ -16,9 +16,10 @@ class Supplier(Base):
     city = Column(String(45), nullable=False)
     adress = Column(String(100), nullable=False)
 
-    Products_idProducts = Column(Integer, ForeignKey('Products_idProducts'))
+    Products_idProducts = Column(Integer, ForeignKey('Products.idProducts'))
+
     product = relationship('Products', back_populates='suppliers')
-    supplier_contact_person = relationship('Supplier_contactperson', back_populates='suppliers')
+    supplier_contact_person = relationship('SupplierContactPerson', back_populates='suppliers')
 
     def __repr__(self):
         return f'{self.idSuppliers},{self.company_name}, {self.email}, {self.phone}, {self.country} {self.zipcode}, {self.adress}'
