@@ -1,9 +1,5 @@
 from sqlalchemy import Column, Integer, String, Text, CHAR, Float, ForeignKey
 from sqlalchemy.orm import relationship
-<<<<<<< HEAD
-=======
-
->>>>>>> 8a25c606e910afd4dfc8c0066b1a6dabbf342d22
 from application.dll.db.db import Base
 
 
