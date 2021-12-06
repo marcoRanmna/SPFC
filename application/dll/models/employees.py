@@ -13,7 +13,8 @@ class Employee(Base):
     phone = Column(String(45), nullable=False)
     Jobtitle = Column(String(45))
     offices_idoffices = Column(Integer, ForeignKey('offices.idoffices'), nullable=False)
-    boss = Column(Integer, ForeignKey('Employees.idEmployees'))
+
+    office = relationship("Office", back_populates="employees")
 
     customers = relationship('Customer', back_populates='employees')
 

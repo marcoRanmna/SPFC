@@ -13,6 +13,8 @@ class Manufacture(Base):
 
     product_has_manufacture = relationship('ProductHasManufacture', back_populates='manufacture')
 
+    contact_person = relationship('ManufactureContactPerson', backpopulates='manufactures')
+
     office = relationship('ManufactureOffice', backpopulates='manufactures')
 
     def __repr__(self):
