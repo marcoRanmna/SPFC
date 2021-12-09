@@ -4,11 +4,10 @@ from application.bll.storage_controller import get_all_storage, create_storage
 
 
 def view_storage():
-    storage = get_all_products()
-    print("*"*10,"\n","All Storage","*"*10,"\n")
-    for storage in storage:
-        print(storage)
-
+    storages = get_all_storage()
+    print("*"*10,"\nAll Storage\n"+"*"*10,"\n")
+    for facility in storages:
+        print(facility)
 
 def add_storage(storage):
     #storage = {
@@ -29,6 +28,7 @@ def test_add_storage():
         csv_reader = csv.reader(csvfile)
         next(csv_reader)
         storage_ls= next(csv_reader)
+    storage_ls = [clean.strip() for clean in storage_ls]
 
     storage = {
         'address': storage_ls[0],
@@ -40,4 +40,5 @@ def test_add_storage():
     add_storage(storage)
 
 if __name__ == '__main__':
-    test_add_storage()
+    #test_add_storage()
+    view_storage()

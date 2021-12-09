@@ -1,5 +1,5 @@
 from application.dll.db.db import session
-from application.dll.models.offices import Office
+from application.dll.models.ourcompany import Office, Storage
 
 
 def get_all_offices():
@@ -7,6 +7,13 @@ def get_all_offices():
 
 
 def create_offices(offices):
-    offices = Office(**offices)
+    facillity = session.query(Storage).filter_by(adress="Anders Personsgatan 14").one()
+    offices = Office(office_name=offices['name'],city=offices['city'], 
+            phone_number=offices['phone_number'],
+            adress=offices['adress'],
+            state=offices['state'],
+            country=offices['country'],
+            zipcode=offices['zipcode'],
+            Storage_idOffice_storage=facillity.idstorage)
     session.add(offices)
     session.commit()
