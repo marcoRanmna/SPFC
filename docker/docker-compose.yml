@@ -17,5 +17,5 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: C:/Python project/SPFC/application/dll/repository/dbvolume
+      device: /home/victor/Documents/SPFC/application/dll/repository/dbvolume
 
