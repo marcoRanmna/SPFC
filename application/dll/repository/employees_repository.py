@@ -1,5 +1,5 @@
 from application.dll.db.db import session
-from application.dll.models.employees import Employee
+from application.dll.models.ourcompany import Employee, Office
 
 
 def get_all_employees():
@@ -7,6 +7,12 @@ def get_all_employees():
 
 
 def create_employees(employees):
-    employees = Employee(**employees)
+    office = session.query(Office).filter_by(office_name="MegaSort").one()
+    employees = Employee(first_name=employees['first_name'], 
+                            last_name=employees['last_name'], 
+                            email=employees['email'], 
+                            phone=employees['phone'], 
+                            Jobtitle=employees['jobtitle'], 
+                            offices_idoffices=office.idoffices)
     session.add(employees)
     session.commit()
