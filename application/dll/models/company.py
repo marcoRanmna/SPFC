@@ -12,7 +12,7 @@ class Company(Base):
     email = Column(String(45), nullable=False)
 
     company_contact_employees = relationship('CompanyContactEmployee', back_populates='companies')
-    customers = relationship('Customer', back_populates='companies')
+    #customers = relationship('Customer', back_populates='companies')
 
     def __repr__(self):
         return f'{self.company_name}, {self.phone_number}, {self.email}'

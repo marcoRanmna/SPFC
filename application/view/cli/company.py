@@ -13,12 +13,17 @@ def view_companies():
 
 def add_companies():
     companies = {
-        'company_name': '',
-        'phone_number': '',
-        'email': ''
+        'company_name': 'Snabbabilar AB',
+        'phone_number': '0707005476',
+        'email': 'snabbabilar@email.com'
     }
     create_companies(companies)
+    #view_companies()
 
 
 def delete_company():
     pass
+
+
+if __name__ == '__main__':
+    add_companies()
