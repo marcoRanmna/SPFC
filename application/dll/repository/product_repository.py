@@ -1,4 +1,4 @@
-from application.dll.models.product import Product
+from application.dll.models import Product
 from application.dll.db.db import session
 
 

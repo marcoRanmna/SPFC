@@ -1,4 +1,4 @@
-from application.dll.models.manufactures_office import ManufactureOffice
+from application.dll.models import ManufactureOffice
 from application.dll.db.db import session
 
 

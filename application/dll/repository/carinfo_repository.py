@@ -1,4 +1,4 @@
-from application.dll.models.carinfo import CarInfo
+from application.dll.models import CarInfo
 from application.dll.db.db import session
 
 

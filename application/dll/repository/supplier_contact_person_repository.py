@@ -1,4 +1,4 @@
-from application.dll.models.supplier_contact_person import SupplierContactPerson
+from application.dll.models import SupplierContactPerson
 from application.dll.db.db import session
 
 

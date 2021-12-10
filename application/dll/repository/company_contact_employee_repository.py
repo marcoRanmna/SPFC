@@ -1,5 +1,5 @@
 from application.dll.db.db import session
-from application.dll.models.company_contact_employees import CompanyContactEmployee
+from application.dll.models import CompanyContactEmployee
 
 
 def get_all_company_contact_employees():

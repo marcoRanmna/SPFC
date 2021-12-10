@@ -1,4 +1,4 @@
-from application.dll.models.manufacture_contact_person import ManufactureContactPerson
+from application.dll.models import ManufactureContactPerson
 from application.dll.db.db import session
 
 
