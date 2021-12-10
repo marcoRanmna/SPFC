@@ -18,6 +18,17 @@ CREATE SCHEMA IF NOT EXISTS `SPFCdb` DEFAULT CHARACTER SET utf8 ;
 USE `SPFCdb` ;
 
 -- -----------------------------------------------------
+-- Users
+-- -----------------------------------------------------
+CREATE user 'albin'@'localhost' identified by 'password';
+CREATE user 'marco'@'localhost' identified by 'password';
+CREATE user 'oscar'@'localhost' identified by 'password';
+
+GRANT ALL PRIVILEGES ON SPFCdb.* TO albin@localhost;
+GRANT ALL PRIVILEGES ON SPFCdb.* TO marco@localhost;
+GRANT ALL PRIVILEGES ON SPFCdb.* TO oscar@localhost;
+
+-- -----------------------------------------------------
 -- Table `SPFCdb`.`Storage`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `SPFCdb`.`Storage` (
