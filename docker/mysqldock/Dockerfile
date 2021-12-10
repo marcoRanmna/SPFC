@@ -1,5 +1,5 @@
 FROM mysql:latest
 
 ENV MYSQL_ROOT_PASSWORD password
-ADD setup.sql /docker-entrypoint-initdb.d
+ADD ./scripts/setup.sql /docker-entrypoint-initdb.d
 

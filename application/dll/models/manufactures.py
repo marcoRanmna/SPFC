@@ -13,9 +13,9 @@ class Manufacture(Base):
 
     product_has_manufacture = relationship('ProductHasManufacture', back_populates='manufacture')
 
-    contact_person = relationship('ManufactureContactPerson', backpopulates='manufactures')
+    contact_person = relationship('ManufactureContactPerson', back_populates='manufactures')
 
-    office = relationship('ManufactureOffice', backpopulates='manufactures')
+    office = relationship('ManufactureOffice', back_populates='manufactures')
 
     def __repr__(self):
         return f'{self.idManufactures},{self.company_name}, {self.number_head_office}'
