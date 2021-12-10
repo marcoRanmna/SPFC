@@ -1,21 +1,20 @@
 version: "3"
 
 services:
-  db:
-    build: .
-    container_name: "SPFCcon"
+  mongo:
+    build: "mongodbdock/."
+    container_name: "SPFCmongo"
     ports:
-      - "3307:3306"
+      - "27022:27017"
     cap_add:
       - SYS_NICE
     volumes:
-      - volumedb:/vol
-
-volumes:
-  volumedb:
-    driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: /home/victor/Documents/SPFC/application/dll/repository/dbvolume
+      - "./vol:/vol"
+  mysql:
+    build: "mysqldock/."
+    container_name: "SPFCmysql"
+    ports:
+      - "3307:3306"
+    volumes:
+      - "./scripts/setup.sql:/docker-entrypoint-initdb.d/myspfc.sql"
 

@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  db:
+    build: .
+    container_name: "SPFCmongo"
+    ports:
+      - "27022:27017"
+    cap_add:
+      - SYS_NICE
+    volumes:
+      - "../vol:/vol"
+
