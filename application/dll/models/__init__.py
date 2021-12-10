@@ -155,7 +155,7 @@ class Customer(Base):
         return f'{self.customer_id}, {self.created}'
 
 
-class Delivery_adress(Base):
+class DeliveryAdress(Base):
     __tablename__ = 'delivery_adress'
 
     iddelivery_adress = Column(Integer, primary_key=True)

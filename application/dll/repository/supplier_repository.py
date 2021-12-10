@@ -1,4 +1,4 @@
-from application.dll.models.suppliers import Supplier
+from application.dll.models import Supplier
 from application.dll.db.db import session
 
 

@@ -1,5 +1,5 @@
 from application.dll.db.db import session
-from application.dll.models.ourcompany import Storage
+from application.dll.models import Storage
 
 
 def get_all_storage():

@@ -1,4 +1,4 @@
-from application.dll.models.products_has_manufactures import ProductHasManufacture
+from application.dll.models import ProductHasManufacture
 from application.dll.db.db import session
 
 

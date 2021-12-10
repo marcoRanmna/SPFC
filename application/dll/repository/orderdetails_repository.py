@@ -1,5 +1,5 @@
 from application.dll.db.db import session
-from application.dll.models.orderdetail import Orderdetail
+from application.dll.models import Orderdetail
 
 
 def get_all_orderdetails():
