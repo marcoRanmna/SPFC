@@ -118,6 +118,21 @@ class CarModel(Base):
         return f'{self.car_brand}, {self.car_model}, {self.car_model_year}'
 
 
+class PrivatePerson(Base):
+    __tablename__ = 'private_person'
+
+    idprivate_person = Column(Integer, primary_key=True)
+    first_name = Column(String(45), nullable=False)
+    last_name = Column(String(45), nullable=False)
+    phone = Column(String(45), nullable=False)
+    email = Column(String(45), nullable=False)
+
+    customers = relationship('Customer', back_populates='private_persons')
+
+    def __repr__(self):
+        return f'{self.idprivate_person}, {self.first_name}, {self.last_name}, {self.phone}, {self.email}'
+
+
 class Customer(Base):
     __tablename__ = 'Customers'
 
@@ -238,21 +253,6 @@ class Orderdetail(Base):
 
     def __repr__(self):
         return f'{self.product_number} {self.quantityordered}, {self.price}'
-
-
-class PrivatePerson(Base):
-    __tablename__ = 'private_person'
-
-    idprivate_person = Column(Integer, primary_key=True)
-    first_name = Column(String(45), nullable=False)
-    last_name = Column(String(45), nullable=False)
-    phone = Column(String(45), nullable=False)
-    email = Column(String(45), nullable=False)
-
-    customers = relationship('Customer', back_populates='private_persons')
-
-    def __repr__(self):
-        return f'{self.idprivate_person}, {self.first_name}, {self.last_name}, {self.phone}, {self.email}'
 
 
 class Product(Base):
