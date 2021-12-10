@@ -4,7 +4,7 @@ from application.bll.storage_controller import get_all_storage, create_storage
 
 
 def view_storage():
-    storage = get_all_products()
+    storage = get_all_storage()
     print("*"*10,"\n","All Storage","*"*10,"\n")
     for storage in storage:
         print(storage)

@@ -19,4 +19,3 @@ class ManufactureOffice(Base):
 
     def __repr__(self):
         return f'{self.idManufactures_offices},{self.phone}, {self.adress}, {self.country}, {self.zipcode}, {self.state}'
-
