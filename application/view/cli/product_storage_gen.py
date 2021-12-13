@@ -19,13 +19,14 @@ def add_product_storages(product_storages):
 
 def test_add_product_storages():
     product_storages = {
-        'product_stored': '',
-        'product_min_limit': '',
-        'product_max_limit': ''
+        'product_stored': 4,
+        'product_min_limit': 3,
+        'products_max_limit': 5,
+        'storage_idstorage': 1
     }
     add_product_storages(product_storages)
 
 
 if __name__ == '__main__':
-    #test_add_product_storages()
-    view_product_storages()
+    test_add_product_storages()
+    #view_product_storages()

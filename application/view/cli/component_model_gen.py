@@ -19,13 +19,13 @@ def add_car_models(car_models):
 
 def test_add_car_model():
     car_models = {
-        'car_brand': '',
-        'car_model': '',
-        'car_model_year': ''
+        'car_brand': 'Volvo',
+        'car_model': 'XC60',
+        'car_model_year': '2020'
     }
     add_car_models(car_models)
 
 
 if __name__ == '__main__':
-    #test_add_car_model()
-    view_car_models()
+    test_add_car_model()
+    #view_car_models()
