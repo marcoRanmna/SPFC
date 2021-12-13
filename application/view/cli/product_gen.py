@@ -23,7 +23,7 @@ def add_products(product):
     create_products(product)
 
 def test_add_products():
-    dir_path = "C:/Teknikhögskolan/SpareParts/PyCharm/application/dll/repository/dbvolume/"
+    dir_path = "C:/Teknikhögskolan/SpareParts/PyCharm/application/dll/repository/data/"
     file_product = dir_path + "product.csv"
     print(file_product, path.exists(file_product))
 
@@ -37,7 +37,9 @@ def test_add_products():
         'product_name': product_list[0],
         'product_number': product_list[1],
         'description': 'Car Battery',
-        'sell_price': int(product_list[-1])
+        'sell_price': int(product_list[-1]),
+        'product_stored_idproduct_stored': 1,
+        'component_model_idcomponent_model': 1
     }
     print(product)
     add_products(product)
