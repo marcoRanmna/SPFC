@@ -101,5 +101,10 @@ def convert_storage():
         mongo_storage.save()
 
 if __name__ == '__main__':
-    # convert_company()
-    convert_product()
+    convert_company()
+    # convert_customer()
+    # convert_manufacture()
+    # convert_order()
+    # convert_product()
+    # convert_supplier()
+    # convert_storage()
