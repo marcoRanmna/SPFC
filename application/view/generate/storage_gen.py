@@ -20,7 +20,7 @@ def add_storage(storage):
     create_storage(storage)
 
 def test_add_storage():
-    dir_path = "C:/Python project/SPFC/application/dll/repository/data/"
+    dir_path = "/home/victor/Documents/SPFC/application/dll/repository/data/"
     file_storage = dir_path + "adresses.csv"
     print(file_storage, path.exists(file_storage))
 
