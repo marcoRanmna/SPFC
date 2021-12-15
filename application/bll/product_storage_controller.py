@@ -7,3 +7,6 @@ def get_all_product_storages():
 
 def create_product_storages(product_storages):
     ps_r.create_product_storages(product_storages)
+
+def subtract_quantity(table_id, sub):
+    ps_r.subtract_quantity(table_id, sub)

@@ -3,6 +3,7 @@ from application.dll.models import Order
 from datetime import datetime
 from application.bll.orders_controller import create_orders
 from application.bll.orderdetails_controller import create_orderdetails
+from application.bll.product_storage_controller import subtract_quantity
 
 class Package:
     def __init__(self, products_ordered, requireddate=None, comments=""):
@@ -15,6 +16,7 @@ class Package:
             if product.product_number in self.orders:
                 self.orders[product.product_number]['quantity'] += 1
                 self.orders[product.product_number]['price'] += product.sell_price
+                self.orders[product.product_number]['product_stored_id'] = product.product_stored_idproduct_stored
             else:
                 self.orders[product.product_number] = {'quantity': 1, 'price': product.sell_price}
 
@@ -27,7 +29,6 @@ class Package:
     def commit(self, customer_id):
         order = self.dict_orders()
         order['Customers_idCustomers'] = customer_id
-        print(order)
         create_orders(order)
 
         orders = session.query(Order).filter_by(Customers_idCustomers=order['Customers_idCustomers'], purchase_date=order['purchase_date']).first()
@@ -38,8 +39,7 @@ class Package:
             tmp['product_number'] = product_number
             tmp['quantityordered'] = orderdetail_dict[product_number]['quantity']
             tmp['price'] = orderdetail_dict[product_number]['price']
-            tmp['Orders_idOrders'] = orders.idOrders #orderdetail[0]
-            #tmp['Orders_Customers_idCustomers'] = orderdetail[1]
-            print(tmp)
+            tmp['Orders_idOrders'] = orders.idOrders 
             create_orderdetails(tmp)
+            subtract_quantity(orderdetail_dict[product_number]['product_stored_id'], tmp['quantityordered'])
             del tmp
