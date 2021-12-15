@@ -1,5 +1,5 @@
 import csv
-from os import path
+#from os import path
 
 from application.bll.manufacture_controller import get_all_manufactures, create_manufactures
 
@@ -23,7 +23,7 @@ def add_manufacture(manufacture):
 
 
 def test_add_manufacture():
-    dir_path = 'C:/Python project/SPFC/application/dll/repository/data/'
+    dir_path = 'C:/Teknikhögskolan/SpareParts/PyCharm/application/dll/repository/data/'
     file_product = dir_path + 'company.csv'
     # print(file_product, path.exists(file_product))
 
@@ -34,7 +34,7 @@ def test_add_manufacture():
     # print(manufacture_list)
 
 
-    dir_path2 = 'C:/Python project/SPFC/application/dll/repository/data/'
+    dir_path2 = 'C:/Teknikhögskolan/SpareParts/PyCharm/application/dll/repository/data/'
     file_product2 = dir_path2 + 'person.csv'
     # print(file_product2, path.exists(file_product2))
 
@@ -46,7 +46,6 @@ def test_add_manufacture():
 
     manufacture = {
         'company_name': manufacture_list[0],
-        'number_head_office': 1
     }
     # print(manufacture)
     add_manufacture(manufacture)
