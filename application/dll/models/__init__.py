@@ -79,7 +79,7 @@ class CarInfo(Base):
 class Company(Base):
     __tablename__ = 'Company'
 
-    idContactPersons = Column(Integer, primary_key=True)
+    idContactPersons = Column(Integer, primary_key=True, autoincrement=True)
     company_name = Column(String(45), nullable=False)
     phone_number = Column(String(45), nullable=False)
     email = Column(String(45), nullable=False)
@@ -124,7 +124,7 @@ class CarModel(Base):
 class PrivatePerson(Base):
     __tablename__ = 'private_person'
 
-    idprivate_person = Column(Integer, primary_key=True)
+    idprivate_person = Column(Integer, primary_key=True, autoincrement=True)
     first_name = Column(String(45), nullable=False)
     last_name = Column(String(45), nullable=False)
     phone = Column(String(45), nullable=False)
@@ -142,9 +142,9 @@ class Customer(Base):
     idCustomers = Column(Integer, primary_key=True)
     created = Column(DATE, nullable=False)
     private_person_or_company = Column(TINYINT, nullable=False)
-    Company_idContactPersons = Column(Integer, ForeignKey('Company.idContactPersons'))
-    Employees_idEmployees = Column(Integer, ForeignKey('Employees.idEmployees'))
-    private_person_idprivate_person = Column(Integer, ForeignKey('private_person.idprivate_person'))
+    Company_idContactPersons = Column(Integer, ForeignKey('Company.idContactPersons'), nullable=True)
+    Employees_idEmployees = Column(Integer, ForeignKey('Employees.idEmployees'), nullable=True)
+    private_person_idprivate_person = Column(Integer, ForeignKey('private_person.idprivate_person'), nullable=True)
     delivery_adress_iddelivery_adress = Column(Integer, ForeignKey('delivery_adress.iddelivery_adress'))
 
     delivery_addresses = relationship('DeliveryAdress', back_populates='customers')
@@ -161,7 +161,7 @@ class Customer(Base):
 class DeliveryAdress(Base):
     __tablename__ = 'delivery_adress'
 
-    iddelivery_adress = Column(Integer, primary_key=True)
+    iddelivery_adress = Column(Integer, primary_key=True, autoincrement=True)
     country = Column(String(45), nullable=False)
     city = Column(String(45), nullable=False)
     state = Column(String(45), nullable=False)
@@ -210,8 +210,8 @@ class ManufactureOffice(Base):
 class Order(Base):
     __tablename__ = 'Orders'
 
-    idOrders = Column(Integer, primary_key=True)
-    Customers_idCustomers = Column(Integer, ForeignKey('Customers.idCustomers'), primary_key=True)
+    idOrders = Column(Integer, primary_key=True, autoincrement=True)
+    Customers_idCustomers = Column(Integer, ForeignKey('Customers.idCustomers'))
     purchase_date = Column(DateTime, nullable=False)
     requireddate = Column(Date)
     shippeddate = Column(Date)
@@ -228,12 +228,11 @@ class Order(Base):
 class Orderdetail(Base):
     __tablename__ = 'Orderdetails'
 
-    idOrderdetails = Column(Integer, primary_key=True)
+    idOrderdetails = Column(Integer, primary_key=True, autoincrement=True)
     product_number = Column(String(45), nullable=False)
     quantityordered = Column(Integer, nullable=False)
     price = Column(Float, nullable=False)
-    Orders_idOrders = Column(Integer, ForeignKey('Orders.idOrders'), nullable=False)
-    Orders_Customers_idCustomers = Column(Integer, ForeignKey('Orders.Customers.idCustomers'), nullable=False)
+    Orders_idOrders = Column(Integer, ForeignKey('Orders.idOrders'))
 
     orders = relationship('Order', back_populates='orderdetails')
 
