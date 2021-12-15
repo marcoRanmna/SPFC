@@ -7,7 +7,8 @@ def get_all_manufactures():
 
 
 def create_manufactures(manufacture):
-    print(manufacture['company_name'], manufacture['number_head_office'])
-    manufacture = Manufacture(company_name=manufacture['company_name'], number_head_office=manufacture['number_head_office'])
+    #print(manufacture['company_name'], manufacture['number_head_office'])
+    #manufacture = Manufacture(company_name=manufacture['company_name'], number_head_office=manufacture['number_head_office'])
+    manufacture = Manufacture(**manufacture)
     session.add(manufacture)
     session.commit()

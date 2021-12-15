@@ -16,11 +16,15 @@ def add_customers(customers):
 
 def test_add_customers():
     customers = {
-        'created': '',
-        'private_person_or_company': ''
+        'created': '2020-12-12',
+        'private_person_or_company': 1,
+        'Company_idContactPersons': 1,
+        'Employees_idEmployees': 1,
+        'private_person_idprivate_person': 1,
+        'delivery_adress_iddelivery_adress': 1
     }
     add_customers(customers)
 
 if __name__ == '__main__':
-    #test_add_customers()
-    view_customers()
+    test_add_customers()
+    #view_customers()

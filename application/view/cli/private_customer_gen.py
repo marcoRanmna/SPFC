@@ -20,14 +20,14 @@ def add_private_customers(private_customers):
 
 def test_add_customers():
     private_customers = {
-        'first_name': '',
-        'last_name': '',
-        'phone': '',
-        'email': ''
+        'first_name': 'Kalle',
+        'last_name': 'Svensson',
+        'phone': '0804050504',
+        'email': 'kalle@email.com'
     }
     add_private_customers(private_customers)
 
 
 if __name__ == '__main__':
-    #test_add_private_customers()
-    view_private_customers()
+    test_add_customers()
+    #view_private_customers()

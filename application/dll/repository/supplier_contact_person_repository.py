@@ -7,7 +7,8 @@ def get_all_supplier_contact_person():
 
 
 def create_supplier_contact_person(supplier_contact_person):
-    print(supplier_contact_person['first_name'], supplier_contact_person['last_name'], supplier_contact_person['phone'], supplier_contact_person['email'])
-    supplier_contact_person = SupplierContactPerson(first_name=supplier_contact_person['first_name'], last_name=supplier_contact_person['last_name'], phone=supplier_contact_person['phone'], email=supplier_contact_person['email'])
+    #print(supplier_contact_person['first_name'], supplier_contact_person['last_name'], supplier_contact_person['phone'], supplier_contact_person['email'])
+    #supplier_contact_person = SupplierContactPerson(first_name=supplier_contact_person['first_name'], last_name=supplier_contact_person['last_name'], phone=supplier_contact_person['phone'], email=supplier_contact_person['email'])
+    supplier_contact_person = SupplierContactPerson(**supplier_contact_person)
     session.add(supplier_contact_person)
     session.commit()

@@ -26,7 +26,7 @@ def delete_record():
 
 
 def test_add_employees():
-    dir_path = "/home/victor/Documents/SPFC/application/dll/repository/dbvolume/"
+    dir_path = "C:/Teknikhögskolan/SpareParts/PyCharm/application/dll/repository/data/"
     file_person = dir_path + "person.csv"
     print(file_person, path.exists(file_person))
 
@@ -41,12 +41,13 @@ def test_add_employees():
         'last_name': person_ls[1],
         'email': person_ls[2],
         'phone': person_ls[3],
-        'jobtitle': 'Seller'
+        'Jobtitle': 'Seller',
+        'offices_idoffices': 1
     }
 
     print(employees)
     add_employees(employees)
 
 if __name__ == '__main__':
-    #test_add_employees()
-    view_employees()
+    test_add_employees()
+    #view_employees()

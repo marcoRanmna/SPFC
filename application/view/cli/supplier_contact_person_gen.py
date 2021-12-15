@@ -13,9 +13,14 @@ def view_supplier_contact_person():
 
 def add_supplier_contact_person():
     supplier_contact_person = {
-        'first_name': '',
-        'last_name': '',
-        'phone': '',
-        'email': '',
+        'first_name': 'Magnus',
+        'last_name': 'Svensson',
+        'phone': '0707133701',
+        'email': 'magnus@email.com',
+        'Suppliers_idSuppliers': 1
     }
     create_supplier_contact_person(supplier_contact_person)
+
+
+if __name__ == '__main__':
+    add_supplier_contact_person()

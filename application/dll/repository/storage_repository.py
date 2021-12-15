@@ -7,7 +7,8 @@ def get_all_storage():
 
 
 def create_storage(storage):
-    storage_facility = Storage(adress=storage['address'], zipcode=storage['zipcode'], city=storage['city'], state=storage['state'], country=storage['country'])
+    #storage_facility = Storage(adress=storage['address'], zipcode=storage['zipcode'], city=storage['city'], state=storage['state'], country=storage['country'])
+    storage_facility = Storage(**storage)
     session.add(storage_facility)
     session.commit()
 
