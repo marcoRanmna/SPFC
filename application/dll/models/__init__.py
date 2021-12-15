@@ -244,13 +244,13 @@ class Orderdetail(Base):
 class ProductHasManufacture(Base):
     __tablename__ = 'Products_has_Manufactures'
 
-    Product_idProducts = Column(ForeignKey('Product.idProducts'), primary_key=True)
+    Products_idProducts = Column(ForeignKey('Products.idProducts'), primary_key=True)
     Manufactures_idManufactures = Column(ForeignKey('Manufactures.idManufactures'), primary_key=True)
     purchase_price = Column(Float, nullable=False)
     quality_rating = Column(Integer, nullable=True)
 
-    #manufacture = relationship('Manufacture', back_populates='product')
-    #product = relationship('Product', back_populates='manufacture')
+    manufacture = relationship('Manufacture', back_populates='product')
+    product = relationship('Product', back_populates='manufacture')
 
 
 class Product(Base):
@@ -267,7 +267,7 @@ class Product(Base):
     product_stored = relationship('ProductStored', back_populates='product')
     component_model = relationship('CarModel', back_populates='product')
     suppliers = relationship('Supplier', back_populates='product')
-    #manufacture = relationship('ProductHasManufacture', back_populates='product')
+    manufacture = relationship('ProductHasManufacture', back_populates='product')
 
     def __repr__(self):
         return f'{self.idProducts},{self.product_name}, {self.product_number}, {self.description}, {self.sell_price}'
@@ -280,7 +280,7 @@ class Manufacture(Base):
     company_name = Column(String(45), nullable=False, unique=True)
     number_head_office = Column(Integer, nullable=True)
 
-    #product = relationship('ProductHasManufacture', back_populates='manufacture')
+    product = relationship('ProductHasManufacture', back_populates='manufacture')
     contact_person = relationship('ManufactureContactPerson', back_populates='manufactures')
     office = relationship('ManufactureOffice', back_populates='manufactures')
 
