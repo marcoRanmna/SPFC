@@ -1,7 +1,7 @@
 from pymongo import MongoClient
 from abc import ABC
 
-client = MongoClient('mongodb://root:s3cr37@localhost:27022')
+client = MongoClient('mongodb://root:password@localhost:27022')
 db = client.classic
 
 
