@@ -19,10 +19,10 @@ def add_product_storages(product_storages):
 
 def test_add_product_storages():
     product_storages = {
-        'product_stored': 4,
-        'product_min_limit': 3,
-        'products_max_limit': 5,
-        'storage_idstorage': 1
+        'product_stored': '',
+        'product_min_limit': '',
+        'products_max_limit': '',
+        'storage_idstorage': ''
     }
     add_product_storages(product_storages)
 

@@ -13,14 +13,17 @@ def view_delivery_adress():
 
 def add_delivery_adress():
     delivery_adress = {
-        'country': '',
-        'city': '',
-        'state': '',
-        'zipcode': '',
-        'adress': ''
+        'country': 'Sweden',
+        'city': 'Gothenburg',
+        'state': 'Västra Götaland',
+        'zipcode': '43560',
+        'adress': 'Granvägen 7'
     }
     create_delivery_adress(delivery_adress)
 
 
 def delete_record():
     pass
+
+if __name__ == '__main__':
+    add_delivery_adress()

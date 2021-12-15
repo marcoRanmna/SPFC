@@ -33,6 +33,7 @@ def test_add_manufacture():
         manufacture_list = next(csv_reader)
     # print(manufacture_list)
 
+
     dir_path2 = 'C:/Python project/SPFC/application/dll/repository/data/'
     file_product2 = dir_path2 + 'person.csv'
     # print(file_product2, path.exists(file_product2))
@@ -45,7 +46,7 @@ def test_add_manufacture():
 
     manufacture = {
         'company_name': manufacture_list[0],
-        'number_head_office': phone_num_list[3],
+        'number_head_office': 1
     }
     # print(manufacture)
     add_manufacture(manufacture)

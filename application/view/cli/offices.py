@@ -25,7 +25,7 @@ def delete_record():
     pass
 
 def test_add_offices():
-    dir_path = "/home/victor/Documents/SPFC/application/dll/repository/dbvolume/"
+    dir_path = "C:/Teknikhögskolan/SpareParts/PyCharm/application/dll/repository/data/"
     file_address = dir_path + "adresses.csv"
     file_phone = dir_path + "person.csv"
     print(file_address, path.exists(file_address))
@@ -45,18 +45,19 @@ def test_add_offices():
     addresses_ls[1] = int(addresses_ls[1].replace(" ", ""))
 
     offices = {
-        'name': 'MegaSort',
+        'office_name': 'MegaSort',
         'city': addresses_ls[2],
         'phone_number': phone_num,
         'adress': addresses_ls[0],
         'state': addresses_ls[3],
         'country': addresses_ls[4],
-        'zipcode': addresses_ls[1]
+        'zipcode': addresses_ls[1],
+        'Storage_idOffice_storage': 1
     }
 
     print(offices)
     add_offices(offices)
 
 if __name__ == '__main__':
-    #test_add_offices()
-    view_offices()
+    test_add_offices()
+    #view_offices()

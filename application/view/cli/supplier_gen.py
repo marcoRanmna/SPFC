@@ -16,8 +16,13 @@ def add_supplier():
         'company_name': '',
         'email': '',
         'phone': '',
+        'country': '',
         'zipcode': '',
         'city': '',
         'adress': '',
+        'Products_idProducts': ''
     }
     create_suppliers(supplier)
+
+if __name__ == '__main__':
+    add_supplier()

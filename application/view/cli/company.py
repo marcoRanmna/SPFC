@@ -13,9 +13,9 @@ def view_companies():
 
 def add_companies():
     companies = {
-        'company_name': 'Snabbabilar AB',
-        'phone_number': '0707005476',
-        'email': 'snabbabilar@email.com'
+        'company_name': 'Snabbastebilarna AB',
+        'phone_number': '0707133769',
+        'email': 'snabbastebilarna@email.com'
     }
     create_companies(companies)
     #view_companies()
@@ -26,5 +26,5 @@ def delete_company():
 
 
 if __name__ == '__main__':
-    add_companies()
-    #view_companies()
+    #add_companies()
+    view_companies()
