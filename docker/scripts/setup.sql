@@ -108,7 +108,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `SPFCdb`.`Manufactures` (
   `idManufactures` INT NOT NULL AUTO_INCREMENT,
   `company_name` VARCHAR(45) NOT NULL,
-  `number_head_office` INT GENERATED ALWAYS AS (1),
+  `number_head_office` INT NULL,
   PRIMARY KEY (`idManufactures`),
   UNIQUE INDEX `company_name_UNIQUE` (`company_name` ASC) VISIBLE)
 ENGINE = InnoDB;
@@ -171,7 +171,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `SPFCdb`.`Products_has_Manufactures` (
   `Products_idProducts` INT NOT NULL,
   `Manufactures_idManufactures` INT NOT NULL,
-  `purchase_price` FLOAT GENERATED ALWAYS AS (0),
+  `purchase_price` FLOAT NOT NULL,
   `quality_rating` INT NULL,
   PRIMARY KEY (`Products_idProducts`, `Manufactures_idManufactures`),
   INDEX `fk_Products_has_Manufactures_Manufactures1_idx` (`Manufactures_idManufactures` ASC) VISIBLE,
@@ -325,7 +325,7 @@ CREATE TABLE IF NOT EXISTS `SPFCdb`.`Orders` (
   `purchase_date` DATETIME NOT NULL,
   `requireddate` DATE NULL,
   `shippeddate` DATE NULL,
-  `status` VARCHAR(45) GENERATED ALWAYS AS ("In progress"),
+  `status` VARCHAR(45) NOT NULL,
   `comments` VARCHAR(250) NULL,
   PRIMARY KEY (`idOrders`, `Customers_idCustomers`),
   INDEX `fk_Orders_Customers1_idx` (`Customers_idCustomers` ASC) VISIBLE,

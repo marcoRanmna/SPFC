@@ -13,14 +13,14 @@ def view_supplier():
 
 def add_supplier():
     supplier = {
-        'company_name': 'Postnorth',
-        'email': 'postnorth@email.com',
-        'phone': '0707040506',
-        'country': 'Sweden',
-        'zipcode': '42056',
-        'city': 'Gothenburg',
-        'adress': 'Postgatan 45',
-        'Products_idProducts': 1
+        'company_name': '',
+        'email': '',
+        'phone': '',
+        'country': '',
+        'zipcode': '',
+        'city': '',
+        'adress': '',
+        'Products_idProducts': ''
     }
     create_suppliers(supplier)
 

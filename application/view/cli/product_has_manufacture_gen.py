@@ -13,10 +13,10 @@ def view_product_has_manufacture():
 
 def add_product_has_manufacture():
     product_has_manufacture = {
-        'Products_idProducts': 1,
-        'Manufactures_idManufactures': 1,
-        'purchase_price': 56,
-        'quality_rating': 5
+        'Products_idProducts': '',
+        'Manufactures_idManufactures': '',
+        'purchase_price': '',
+        'quality_rating': ''
     }
     create_product_has_manufacture(product_has_manufacture)
 

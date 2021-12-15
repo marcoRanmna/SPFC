@@ -16,12 +16,12 @@ def add_customers(customers):
 
 def test_add_customers():
     customers = {
-        'created': '2020-12-12',
-        'private_person_or_company': 1,
-        'Company_idContactPersons': 1,
-        'Employees_idEmployees': 1,
-        'private_person_idprivate_person': 1,
-        'delivery_adress_iddelivery_adress': 1
+        'created': '',
+        'private_person_or_company': '',
+        'Company_idContactPersons': '',
+        'Employees_idEmployees': '',
+        'private_person_idprivate_person': '',
+        'delivery_adress_iddelivery_adress': ''
     }
     add_customers(customers)
 

@@ -22,7 +22,7 @@ def test_add_customers():
     private_customers = {
         'first_name': 'Kalle',
         'last_name': 'Svensson',
-        'phone': '0804050504',
+        'phone': '0704050504',
         'email': 'kalle@email.com'
     }
     add_private_customers(private_customers)
