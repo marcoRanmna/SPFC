@@ -22,7 +22,7 @@ def test_add_product_storages():
         'product_stored': '',
         'product_min_limit': '',
         'products_max_limit': '',
-        'storage_idstorage': ''
+        'Storage_idstorage': ''
     }
     add_product_storages(product_storages)
 
