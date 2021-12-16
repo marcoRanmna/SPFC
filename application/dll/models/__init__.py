@@ -133,7 +133,7 @@ class PrivatePerson(Base):
     customers = relationship('Customer', back_populates='private_persons')
 
     def __repr__(self):
-        return f'{self.idprivate_person}, {self.first_name}, {self.last_name}, {self.phone}, {self.email}'
+        return f'{self.first_name}, {self.last_name}, {self.phone}, {self.email}'
 
 
 class Customer(Base):
@@ -155,7 +155,7 @@ class Customer(Base):
     employees = relationship('Employee', back_populates='customers')
 
     def __repr__(self):
-        return f'{self.customer_id}, {self.created}'
+        return f'{self.created}'
 
 
 class DeliveryAdress(Base):
@@ -184,10 +184,11 @@ class ManufactureContactPerson(Base):
     email = Column(String(100), nullable=False, unique=True)
 
     Manufactures_idManufactures = Column(Integer, ForeignKey('Manufactures.idManufactures'))
+    Manufactures_offices_idManufactures_offices = Column(Integer, ForeignKey('Manufactures_offices.idManufactures_offices'))
     manufactures = relationship('Manufacture', back_populates='contact_person')
 
     def __repr__(self):
-        return f'{self.idManufactures_contact_person},{self.phone_number}, {self.first_name}, {self.last_name}, {self.email}'
+        return f'{self.phone_number}, {self.first_name}, {self.last_name}, {self.email}'
 
 
 class ManufactureOffice(Base):
@@ -204,7 +205,7 @@ class ManufactureOffice(Base):
     manufactures = relationship('Manufacture', back_populates='office')
 
     def __repr__(self):
-        return f'{self.idManufactures_offices},{self.phone}, {self.adress}, {self.country}, {self.zipcode}, {self.state}'
+        return f'{self.phone}, {self.adress}, {self.country}, {self.zipcode}, {self.state}'
 
 
 class Order(Base):
@@ -233,6 +234,7 @@ class Orderdetail(Base):
     quantityordered = Column(Integer, nullable=False)
     price = Column(Float, nullable=False)
     Orders_idOrders = Column(Integer, ForeignKey('Orders.idOrders'))
+    Orders_Customers_idCustomers = Column(Integer, ForeignKey('Orders.Customers_idCustomers'))
 
     orders = relationship('Order', back_populates='orderdetails')
 
@@ -250,6 +252,9 @@ class ProductHasManufacture(Base):
 
     manufacture = relationship('Manufacture', back_populates='product')
     product = relationship('Product', back_populates='manufacture')
+
+    def __repr__(self):
+        return f'{self.purchase_price} {self.quality_rating}'
 
 
 class Product(Base):
@@ -269,7 +274,7 @@ class Product(Base):
     manufacture = relationship('ProductHasManufacture', back_populates='product')
 
     def __repr__(self):
-        return f'{self.idProducts},{self.product_name}, {self.product_number}, {self.description}, {self.sell_price}'
+        return f'{self.product_name}, {self.product_number}, {self.description}, {self.sell_price}'
 
 
 class Manufacture(Base):
@@ -284,7 +289,7 @@ class Manufacture(Base):
     office = relationship('ManufactureOffice', back_populates='manufactures')
 
     def __repr__(self):
-        return f'{self.idManufactures},{self.company_name}, {self.number_head_office}'
+        return f'{self.company_name}, {self.number_head_office}'
 
 
 class ProductStored(Base):
@@ -294,7 +299,7 @@ class ProductStored(Base):
     product_stored = Column(Integer)
     product_min_limit = Column(Integer)
     products_max_limit = Column(Integer)
-    storage_idstorage = Column(Integer, ForeignKey("Storage.idstorage"), nullable=False)
+    Storage_idstorage = Column(Integer, ForeignKey("Storage.idstorage"), nullable=False)
 
     storage = relationship("Storage", back_populates="product_stored")
     product = relationship("Product", back_populates="product_stored")
@@ -316,7 +321,7 @@ class SupplierContactPerson(Base):
     suppliers = relationship('Supplier', back_populates='supplier_contact_person')
 
     def __repr__(self):
-        return f'{self.idSupplier_contactperson},{self.first_name}, {self.last_name}, {self.phone}, {self.email}'
+        return f'{self.first_name}, {self.last_name}, {self.phone}, {self.email}'
 
 
 class Supplier(Base):
@@ -337,5 +342,5 @@ class Supplier(Base):
     supplier_contact_person = relationship('SupplierContactPerson', back_populates='suppliers')
 
     def __repr__(self):
-        return f'{self.idSuppliers},{self.company_name}, {self.email}, {self.phone}, {self.country} {self.zipcode}, {self.adress}'
+        return f'{self.company_name}, {self.email}, {self.phone}, {self.country} {self.zipcode}, {self.city}, {self.adress}'
 

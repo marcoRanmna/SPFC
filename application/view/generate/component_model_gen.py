@@ -21,7 +21,7 @@ def add_car_models(car_models):
 
 
 def test_add_car_model():
-    dir_path = "/home/victor/Documents/SPFC/application/dll/repository/data/"
+    dir_path = "C:/Teknikhögskolan/SpareParts/PyCharm/application/dll/repository/data/"
     file_car = dir_path + "car.csv"
     print(file_car, path.exists(file_car))
 
@@ -42,5 +42,5 @@ def test_add_car_model():
 
 
 if __name__ == '__main__':
-    test_add_car_model()
-    #view_car_models()
+    #test_add_car_model()
+    view_car_models()
