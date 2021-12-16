@@ -13,6 +13,7 @@ def view_company_contact_employees():
 
 def add_company_contact_employees():
     company_contact_employees = {
+        'Company_idContactPersons': '',
         'first_name': '',
         'last_name': '',
         'phone': '',
@@ -23,3 +24,7 @@ def add_company_contact_employees():
 
 def delete_company_contact_employee():
     pass
+
+if __name__ == '__main__':
+    add_company_contact_employees()
+    #view_company_contact_employees()
