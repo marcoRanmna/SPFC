@@ -27,3 +27,7 @@ class Supplier(Document):
 
 class Storage(Document):
     collection = db.Storage
+
+
+class Office(Document):
+    collection = db.Office

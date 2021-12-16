@@ -234,7 +234,7 @@ class Orderdetail(Base):
     quantityordered = Column(Integer, nullable=False)
     price = Column(Float, nullable=False)
     Orders_idOrders = Column(Integer, ForeignKey('Orders.idOrders'))
-    Orders_Customers_idCustomers = Column(Integer, ForeignKey('Orders.Customers_idCustomers'))
+    Orders_Customers_idCustomers = Column(Integer, ForeignKey('Orders.Customers.idCustomers'))
 
     orders = relationship('Order', back_populates='orderdetails')
 
@@ -343,4 +343,3 @@ class Supplier(Base):
 
     def __repr__(self):
         return f'{self.company_name}, {self.email}, {self.phone}, {self.country} {self.zipcode}, {self.city}, {self.adress}'
-
