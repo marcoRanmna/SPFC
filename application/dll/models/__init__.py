@@ -184,6 +184,7 @@ class ManufactureContactPerson(Base):
     email = Column(String(100), nullable=False, unique=True)
 
     Manufactures_idManufactures = Column(Integer, ForeignKey('Manufactures.idManufactures'))
+    Manufactures_offices_idManufactures_offices = Column(Integer, ForeignKey('Manufactures_offices.idManufactures_offices'))
     manufactures = relationship('Manufacture', back_populates='contact_person')
 
     def __repr__(self):
@@ -233,6 +234,7 @@ class Orderdetail(Base):
     quantityordered = Column(Integer, nullable=False)
     price = Column(Float, nullable=False)
     Orders_idOrders = Column(Integer, ForeignKey('Orders.idOrders'))
+    Orders_Customers_idCustomers = Column(Integer, ForeignKey('Orders.Customers_idCustomers'))
 
     orders = relationship('Order', back_populates='orderdetails')
 
@@ -297,7 +299,7 @@ class ProductStored(Base):
     product_stored = Column(Integer)
     product_min_limit = Column(Integer)
     products_max_limit = Column(Integer)
-    storage_idstorage = Column(Integer, ForeignKey("Storage.idstorage"), nullable=False)
+    Storage_idstorage = Column(Integer, ForeignKey("Storage.idstorage"), nullable=False)
 
     storage = relationship("Storage", back_populates="product_stored")
     product = relationship("Product", back_populates="product_stored")
