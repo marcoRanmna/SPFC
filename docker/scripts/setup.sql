@@ -151,8 +151,6 @@ CREATE TABLE IF NOT EXISTS `SPFCdb`.`Manufactures_contact_person` (
   `Manufactures_offices_idManufactures_offices` INT NULL,
   PRIMARY KEY (`idManufactures_contact_person`),
   INDEX `fk_Manufactures_contact_person_Manufactures1_idx` (`Manufactures_idManufactures` ASC) VISIBLE,
-  UNIQUE INDEX `phone_number_UNIQUE` (`phone_number` ASC) VISIBLE,
-  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE,
   INDEX `fk_Manufactures_contact_person_Manufactures_offices1_idx` (`Manufactures_offices_idManufactures_offices` ASC) VISIBLE,
   CONSTRAINT `fk_Manufactures_contact_person_Manufactures1`
     FOREIGN KEY (`Manufactures_idManufactures`)

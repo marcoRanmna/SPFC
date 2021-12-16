@@ -182,9 +182,11 @@ class ManufactureContactPerson(Base):
     first_name = Column(String(45), nullable=False)
     last_name = Column(String(45), nullable=False)
     email = Column(String(100), nullable=False, unique=True)
-
     Manufactures_idManufactures = Column(Integer, ForeignKey('Manufactures.idManufactures'))
+    Manufactures_offices_idManufactures_offices = Column(Integer, ForeignKey('Manufactures_offices.idManufactures_offices'), nullable=True)
+
     manufactures = relationship('Manufacture', back_populates='contact_person')
+    manufactures_office = relationship('ManufactureOffice', back_populates='manufactures_contactperson')
 
     def __repr__(self):
         return f'{self.idManufactures_contact_person},{self.phone_number}, {self.first_name}, {self.last_name}, {self.email}'
@@ -202,6 +204,7 @@ class ManufactureOffice(Base):
     Manufactures_idManufactures = Column(Integer, ForeignKey('Manufactures.idManufactures'))
 
     manufactures = relationship('Manufacture', back_populates='office')
+    manufactures_contactperson = relationship('ManufactureContactPerson', back_populates='manufactures_office')
 
     def __repr__(self):
         return f'{self.idManufactures_offices},{self.phone}, {self.adress}, {self.country}, {self.zipcode}, {self.state}'
