@@ -1,22 +1,22 @@
-from application.dll.db.db import session
-from application.dll.models import CarModel as Component
-from application.dll.models import Product, ProductStored
+from application.bll.component_model_controller import get_specific_car_models
+from application.bll.product_controller import get_specific_products, get_all_products
+from application.bll.product_storage_controller import get_specific_product_storages
 
 class Productquery:
 
     def __init__(self,car):
         self.car = car
-        component = session.query(Component).filter_by(car_brand=self.car.brand, car_model=self.car.model).first()
+        component = get_specific_car_models(car_brand=self.car.brand, car_model=self.car.model)[0]
         self.idcomponent = component.idcomponent_model
 
     @classmethod
     def verified(cls, brand, model):
-        component = session.query(Component).filter_by(car_brand=brand, car_model=model).first()
+        component = get_specific_car_models(car_brand=brand, car_model=model)[0]
         return False if component is None else True
 
     @classmethod
     def get_component_id(cls, brand, model):
-        component = session.query(Component).filter_by(car_brand=brand, car_model=model).first()
+        component = get_specific_car_models(car_brand=brand, car_model=model)[0]
         return component.idcomponent_model
 
     @staticmethod
@@ -28,10 +28,10 @@ class Productquery:
 
     def query_search(self, search):
         product_list = []
-        result = session.query(Product).filter_by(component_model_idcomponent_model=self.idcomponent).all()
+        result = get_all_products()
         for product in result:
             if all(s.lower() in product.product_name.lower() for s in search):
-                stored = session.query(ProductStored).filter_by(idproduct_stored=product.product_stored_idproduct_stored).first()
+                stored = get_specific_product_storages(idproduct_stored=product.product_stored_idproduct_stored)[0]
                 setattr(product, 'quantity', stored.product_stored)
                 product_list.append(product)
         return product_list
