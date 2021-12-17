@@ -20,4 +20,10 @@ def create_supplier(company_name=None, email=None, phone=None, country=None, sta
 if __name__ == '__main__':
     get_all_suppliers()
     #find_suppliers()
-    create_supplier()
+    # supplier_contact_person = [{
+    #     "first_name": 'Kalle',
+    #     "last_name": 'Eriksson',
+    #     "phone": '0707987676',
+    #     'email': 'kalle@email.se'
+    # }]
+    # create_supplier('Postnorth', 'postnorth@email.com', '0808767654', 'Sweden', 'Västra Götaland', '43543', 'Gothenburg', 'Brogatan 5', 8, supplier_contact_person)
