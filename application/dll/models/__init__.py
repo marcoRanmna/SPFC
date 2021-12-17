@@ -344,3 +344,14 @@ class Supplier(Base):
 
     def __repr__(self):
         return f'{self.company_name}, {self.email}, {self.phone}, {self.country} {self.zipcode}, {self.city}, {self.adress}'
+
+
+class AutoOrder(Base):
+    __tablename__ = 'auto_order'
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    messageUpdate = Column(String(50), nullable=False)
+    buy = Column(Integer, nullable=False)
+
+    def __repr__(self):
+        return f'{self.messageUpdate}, {self.buy}'
