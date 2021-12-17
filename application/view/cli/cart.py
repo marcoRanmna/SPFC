@@ -1,5 +1,3 @@
-from application.dll.models import Product, Supplier
-from application.dll.db.db import session
 class Cart:
     def __init__(self, customer):
         self.checkout_product = []

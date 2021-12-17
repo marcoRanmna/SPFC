@@ -33,7 +33,6 @@ class Package:
 
         orderdetail = (orders.idOrders, customer_id)
         orderdetail_dict = self.dict_orderdetail()
-        print(orderdetail_dict)
         for product_number in orderdetail_dict:
             tmp = {}
             tmp['product_number'] = product_number

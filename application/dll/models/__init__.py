@@ -235,7 +235,6 @@ class Orderdetail(Base):
     quantityordered = Column(Integer, nullable=False)
     price = Column(Float, nullable=False)
     Orders_idOrders = Column(Integer, ForeignKey('Orders.idOrders'))
-    #Orders_Customers_idCustomers = Column(Integer, ForeignKey('Orders.Customers.idCustomers'))
 
     orders = relationship('Order', back_populates='orderdetails')
 
