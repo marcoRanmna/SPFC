@@ -124,6 +124,7 @@ def checkout(cart, customer, company):
         choice = input('Which do you choose? ')
         if choice in supplier_name:
             print(f'Thanks for using {choice}')
+            running = False
         else:
             print(f'Your {choice} is misspelled or it does not exist, try again')
 
