@@ -1,9 +1,11 @@
+from application.dll.models import Product, Supplier
 from application.view.cli.newcustomer import Customer
 from application.view.cli.producthandler import ProductsHandler
 from application.view.cli.cart import Cart
 from application.view.cli.persons import Person
 from application.view.cli.company import Company
 from application.view.cli.packages import Package
+from application.dll.db.db import session
 from datetime import datetime
 
 def introduction():
@@ -23,7 +25,7 @@ def introduction():
 
 def new_customer():
     print("\n======= Nice to meet you new customer =======\n")
-    print("Are you a private person or a Coperation overload like us?")
+    print("Are you a private person or a Corporation overload like us?")
     print("","(1) Private Person\n", "(2) Company")
     priv_or_corp = "0"
     while priv_or_corp != "1" and priv_or_corp != "2":
@@ -57,7 +59,7 @@ def shop(customer, avliable_product, company):
         avliable_product.ls()
 
     print("\n======= Evil Corp Shop =======\n")
-    print("Hi, dear valueded customer what product could i intressent you in?")
+    print("Hi, dear valued customer what product could I interest you in?")
     user_search()
     while True:
         print("Would you like:\n","(1) add product to cart\n", 
@@ -85,8 +87,8 @@ def shop(customer, avliable_product, company):
 def checkout(cart, customer, company):
     print("\n======= Checkout Line =======\n")
     cart.ls()
-    print("To have your product(s) deliverd to you dear customer.")
-    print("Evil Corp must have certian information about you to validate you :)")
+    print("To have your product(s) delivered to you dear customer.")
+    print("Evil Corp must have certain information about you to validate you :)")
     name = input("Your first and last name: ").strip().split(" ")
     phone = input("Your phone number: ").strip()
     email = input("Your email address: ").strip()
@@ -108,13 +110,31 @@ def checkout(cart, customer, company):
     address = input("Address: ")
     user.add_address(country, state, city, zipcode, address)
 
+    print("This is the supplier/suppliers of your product")
+    supplier_name = []
+    for product in cart.checkout_product:
+        products = session.query(Product).filter_by(product_name=product).first()
+        id = products['idProducts']
+        suppliers = session.query(Supplier).filter_by(Products_idProducts=id).first()
+        for supplier in suppliers:
+            print(supplier['company_name'])
+            supplier_name.append(supplier['company_name'])
+    running = True
+    while running:
+        choice = input('Which do you choose? ')
+        if choice in supplier_name:
+            print(f'Thanks for using {choice}')
+        else:
+            print(f'Your {choice} is misspelled or it does not exist, try again')
+
+
     date_format = "%Y-%m-%d"
     requireddate_str = input("Do you have a required date[format YYYY-mm-dd]: ").strip()
     requireddate = requireddate_str.split("-")
     valid_date = len(requireddate) == 3 and all(d.isdigit() for d in requireddate) and datetime.today() < datetime.strptime(requireddate_str, date_format)
     comment = input("Do you have any comments: ")
     if valid_date:
-        customer.packages.append(Package(cart.checkout_product ,requireddate=datetime.strptime(requireddate_str, date_format), comments=comment))
+        customer.packages.append(Package(cart.checkout_product,requireddate=datetime.strptime(requireddate_str, date_format), comments=comment))
     else:
         customer.packages.append(Package(cart.checkout_product,comments=comment))
 

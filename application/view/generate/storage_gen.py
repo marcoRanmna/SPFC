@@ -20,7 +20,7 @@ def add_storage(storage):
     create_storage(storage)
 
 def test_add_storage():
-    dir_path = "/home/victor/Documents/SPFC/application/dll/repository/data/"
+    dir_path = "C:/Teknikhögskolan/SpareParts/PyCharm/application/dll/repository/data/"
     file_storage = dir_path + "adresses.csv"
     print(file_storage, path.exists(file_storage))
 
@@ -31,7 +31,7 @@ def test_add_storage():
     storage_ls = [clean.strip() for clean in storage_ls]
 
     storage = {
-        'address': storage_ls[0],
+        'adress': storage_ls[0],
         'zipcode': storage_ls[1],
         'city': storage_ls[2],
         'state': storage_ls[3],

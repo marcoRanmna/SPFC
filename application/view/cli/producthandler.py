@@ -36,6 +36,7 @@ class Productquery:
                 product_list.append(product)
         return product_list
 
+
 class ProductsHandler(Productquery):
     def __init__(self, customer):
         super().__init__(customer)

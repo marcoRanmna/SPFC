@@ -1,6 +1,7 @@
 from application.bll.private_customer_controller import create_private_customers
 from application.bll.delivery_adress_controller import create_delivery_adress
 
+
 class Person:
     def __init__(self,first_name, last_name, phone, email):
         self.first_name = first_name 
@@ -25,6 +26,7 @@ class Person:
         for delivery_address in self.address:
             delivery_address.commit()
 
+
 class Address:
     def __init__(self, country, state, city, zipcode, address):
         self.country = country
@@ -42,4 +44,3 @@ class Address:
 
     def commit(self):
         create_delivery_adress(self.dict())
-
