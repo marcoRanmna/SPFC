@@ -1,13 +1,11 @@
-from application.dll.models import Product, Supplier
-from application.bll.supplier_controller import get_all_suppliers
-from application.bll.product_controller import get_all_products
+from application.bll.supplier_controller import get_specific_suppliers
+from application.bll.product_controller import get_specific_products
 from application.view.cli.newcustomer import Customer
 from application.view.cli.producthandler import ProductsHandler
 from application.view.cli.cart import Cart
 from application.view.cli.persons import Person
 from application.view.cli.company import Company
 from application.view.cli.packages import Package
-from application.dll.db.db import session
 from datetime import datetime
 
 def introduction():
@@ -115,9 +113,9 @@ def checkout(cart, customer, company):
     print("This is the supplier/suppliers of your product")
     supplier_name = []
     for product in cart.checkout_product:
-        products = get_all_suppliers((Product).filter_by(product_name=product).first())
+        products = get_specific_products(product_name=product)
         id = products['idProducts']
-        suppliers = session.query(Supplier).filter_by(Products_idProducts=id).first()
+        suppliers = get_specific_suppliers(idSuppliers=id)
         for supplier in suppliers:
             print(supplier['company_name'])
             supplier_name.append(supplier['company_name'])
