@@ -1,4 +1,4 @@
-from application.view.cli.newcustomer import Customer
+from application.view.cli.customer import Customer
 from application.view.cli.producthandler import ProductsHandler
 from application.view.cli.cart import Cart
 from application.view.cli.persons import Person
@@ -21,9 +21,10 @@ def introduction():
     if choice.isdigit and -1 < int(choice) < len(message):
         options[message[int(choice)-1]]()
 
-
-def new_customer():
-    print("\n======= Nice to meet you new customer =======\n")
+def private_or_company():
+    '''
+        This will return a <1, str type> for private or <2, str type> for coprate
+    '''
     print("Are you a private person or a Corporation overload like us?")
     print("","(1) Private Person\n", "(2) Company")
     priv_or_corp = "0"
@@ -31,7 +32,11 @@ def new_customer():
         priv_or_corp = input("Select: ").strip()
         if priv_or_corp != "1" and priv_or_corp != "2":
             print("Enter the number in ( x )")
+    return priv_or_corp
 
+def new_customer():
+    print("\n======= Nice to meet you new customer =======\n")
+    priv_or_corp = private_or_company()
     if priv_or_corp == "2":
         newcompany = Company.coperate_hello()
     else:
@@ -42,7 +47,27 @@ def new_customer():
 
 
 def old_customer():
-    print("Previous customer")
+    print("\n======= Welcome Back Meatbag! =======\n")
+    priv_or_corp = private_or_company()
+    print("So you are back again for shitty service")
+    print("Don't worry we got you covered here at evil corp\n")
+    if priv_or_corp == "2":
+        oldcompany = Company.company_locate()
+        individual = Person.locate_person(priv_or_corp, company_id=oldcompany.corp_obj.idContactPersons)
+    else:
+        individual = Person.locate_person(priv_or_corp)
+        oldcompany = None
+    oldcustomer = Customer.previous_locate(individual, priv_or_corp)
+    individual.find_address(oldcustomer)
+
+    print("Would you like to see your orders")
+    x = ""
+    while x != 'n' and x != 'y':
+        x = input("y/n? ").strip()
+    if x == 'y':
+        avliable_product = ProductsHandler(oldcustomer)
+        avliable_product.show_orders(oldcustomer.customer_obj)
+    shop(oldcustomer, avliable_product, oldcompany)
 
 def ourCompany():
     pass
@@ -131,6 +156,7 @@ def session_commit(customer, user, company, id_supplier):
     else:
         user.commit()
         customer.commit(user.address[0], id_supplier, private=user)
+    print("Transaction completed!")
 
 
 if __name__ == '__main__':
