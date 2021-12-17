@@ -111,14 +111,22 @@ def checkout(cart, customer, company):
     user.add_address(country, state, city, zipcode, address)
 
     print("This is the supplier/suppliers of your product")
+    supplier_name = []
     for product in cart.checkout_product:
-        products = session.query(Product).filter_by(product_name=product)
+        products = session.query(Product).filter_by(product_name=product).first()
         id = products['idProducts']
-        suppliers = session.query(Supplier).filter_by(Products_idProducts=id)
+        suppliers = session.query(Supplier).filter_by(Products_idProducts=id).first()
         for supplier in suppliers:
             print(supplier['company_name'])
-    choice = input('Which do you choose? ')
-    print(f'Thanks for using {choice}')
+            supplier_name.append(supplier['company_name'])
+    running = True
+    while running:
+        choice = input('Which do you choose? ')
+        if choice in supplier_name:
+            print(f'Thanks for using {choice}')
+        else:
+            print(f'Your {choice} is misspelled or it does not exist, try again')
+
 
     date_format = "%Y-%m-%d"
     requireddate_str = input("Do you have a required date[format YYYY-mm-dd]: ").strip()
