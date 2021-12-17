@@ -1,7 +1,8 @@
-from application.dll.db.db import session
-from application.dll.models import Order
+#from application.dll.db.db import session
+#from application.dll.models import Order
+
 from datetime import datetime
-from application.bll.orders_controller import create_orders
+from application.bll.orders_controller import create_orders, get_specific_orders
 from application.bll.orderdetails_controller import create_orderdetails
 from application.bll.product_storage_controller import subtract_quantity
 
@@ -18,7 +19,7 @@ class Package:
                 self.orders[product.product_number]['price'] += product.sell_price
                 self.orders[product.product_number]['product_stored_id'] = product.product_stored_idproduct_stored
             else:
-                self.orders[product.product_number] = {'quantity': 1, 'price': product.sell_price}
+                self.orders[product.product_number] = {'quantity': 1, 'price': product.sell_price, 'product_stored_id': product.product_stored_idproduct_stored}
 
     def dict_orderdetail(self):
         return self.orders 
@@ -31,9 +32,12 @@ class Package:
         order['Customers_idCustomers'] = customer_id
         create_orders(order)
 
-        orders = session.query(Order).filter_by(Customers_idCustomers=order['Customers_idCustomers'], purchase_date=order['purchase_date']).first()
+        #orders = session.query(Order).filter_by(Customers_idCustomers=order['Customers_idCustomers'], purchase_date=order['purchase_date']).first()
+        orders = get_specific_orders(Customers_idCustomers=order['Customers_idCustomers'], purchase_date=order['purchase_date'])[0]
+
         orderdetail = (orders.idOrders, customer_id)
         orderdetail_dict = self.dict_orderdetail()
+        print(orderdetail_dict)
         for product_number in orderdetail_dict:
             tmp = {}
             tmp['product_number'] = product_number

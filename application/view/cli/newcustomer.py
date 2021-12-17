@@ -1,11 +1,13 @@
 from datetime import datetime
 from application.view.cli.producthandler import ProductsHandler
-from application.bll.customer_controller import create_customer
+from application.bll.customer_controller import create_customer, get_specific_customers
 from application.bll.carinfo_controller import create_carinfo
-from application.dll.db.db import session
-from application.dll.models import PrivatePerson, DeliveryAdress, Customer
-from application.dll.models import Customer as CustomerTable
+from application.bll.private_customer_controller import get_specific_private_customers
+from application.bll.delivery_adress_controller import get_specific_delivery_adress
 
+#from application.dll.db.db import session
+#from application.dll.models import PrivatePerson, DeliveryAdress
+#from application.dll.models import Customer as CustomerTable
 
 class Customer:
     def __init__(self, priv_or_corp, car_id, brand, model, year):
@@ -38,9 +40,13 @@ class Customer:
     def commit(self, d_address, private=None, corp=None):
         customer_dict = self.customer_dict()
         if customer_dict['private_person_or_company'] == 1:
-            priv = session.query(PrivatePerson).filter_by(first_name=private.first_name, last_name=private.last_name, email=private.email).first()
+
+            #priv = session.query(PrivatePerson).filter_by(first_name=private.first_name, last_name=private.last_name, email=private.email).first()
+            priv = get_specific_private_customers(first_name=private.first_name, last_name=private.last_name, email=private.email)[0]
             customer_dict['private_person_idprivate_person'] = priv.idprivate_person
-        delivery_id = session.query(DeliveryAdress).filter_by(adress=d_address.address ,zipcode=d_address.zipcode , country=d_address.country).first()
+
+        #delivery_id = session.query(DeliveryAdress).filter_by(adress=d_address.address ,zipcode=d_address.zipcode , country=d_address.country).first()
+        delivery_id = get_specific_delivery_adress(adress=d_address.address, zipcode=d_address.zipcode, country=d_address.country)[0]
         customer_dict['delivery_adress_iddelivery_adress'] = delivery_id.iddelivery_adress
         create_customer(customer_dict)
 
@@ -51,7 +57,12 @@ class Customer:
         self.packages_commit(customer_id)
 
     def car_info_commit(self, customer_dict):
-        customer_obj = session.query(CustomerTable).filter_by(created=customer_dict['created'], private_person_or_company=customer_dict['private_person_or_company'], delivery_adress_iddelivery_adress=customer_dict['delivery_adress_iddelivery_adress']).first()
+
+        customer_obj = get_specific_customers(created=customer_dict['created'], private_person_or_company=customer_dict['private_person_or_company'], delivery_adress_iddelivery_adress=customer_dict['delivery_adress_iddelivery_adress'])[0]
+
+        #session.query(CustomerTable).filter_by(created=customer_dict['created'], private_person_or_company=customer_dict['private_person_or_company'], delivery_adress_iddelivery_adress=customer_dict['delivery_adress_iddelivery_adress']).first()
+
+
         car_info_lists = self.car_info_dict()
         for car_key in car_info_lists:
             tmp = {}
