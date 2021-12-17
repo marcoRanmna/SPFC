@@ -33,7 +33,7 @@ class Customer:
     def customer_dict(self):
         return {'created': self.created, 'private_person_or_company': self.priv_or_corp }
 
-    def commit(self, d_address, private=None, corp=None):
+    def commit(self, d_address, supplier_id, private=None, corp=None):
         customer_dict = self.customer_dict()
         if customer_dict['private_person_or_company'] == 1:
 
@@ -48,7 +48,8 @@ class Customer:
         customer_id = self.car_info_commit(customer_dict)
 
         # -- Package
-        self.packages_commit(customer_id)
+        self.packages_commit(customer_id, supplier_id)
+
 
     def car_info_commit(self, customer_dict):
 
@@ -68,9 +69,9 @@ class Customer:
             del tmp
         return customer_obj.idCustomers
     
-    def packages_commit(self, customer_id):
+    def packages_commit(self, customer_id, supplier_id):
         for package in self.packages:
-            package.commit(customer_id)
+            package.commit(customer_id, supplier_id)
 
 
     @classmethod

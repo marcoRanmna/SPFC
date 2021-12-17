@@ -13,14 +13,15 @@ def view_supplier():
 
 def add_supplier():
     supplier = {
-        'company_name': '',
-        'email': '',
-        'phone': '',
-        'country': '',
-        'zipcode': '',
-        'city': '',
-        'adress': '',
-        'Products_idProducts': ''
+        'company_name': 'Bilbengt',
+        'email': 'bengt@email.com',
+        'phone': '0707007006',
+        'state': 'Holland',
+        'country': 'sweden',
+        'zipcode': '43540',
+        'city': 'klaras',
+        'adress': 'bokgatan 1',
+        'Products_idProducts': 8
     }
     create_suppliers(supplier)
 

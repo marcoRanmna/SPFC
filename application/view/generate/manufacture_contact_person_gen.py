@@ -25,7 +25,7 @@ def add_manufacture_contact_person(manufacture_contact_person):
 
 
 def test_add_manufacture_contact_person():
-    dir_path = 'C:/Python project/SPFC/application/dll/repository/dbvolume/'
+    dir_path = 'C:/Teknikhögskolan/SpareParts/PyCharm/application/dll/repository/data/'
     file_product = dir_path + 'person.csv'
     print(file_product, path.exists(file_product))
 
@@ -36,10 +36,12 @@ def test_add_manufacture_contact_person():
     print(contact_person_list)
 
     manufacture_contact_person = {
-        'phone_number': '',
-        'first_name': '',
-        'last_name': '',
-        'email': '',
+        'phone_number': '0808',
+        'first_name': 'Ko',
+        'last_name': 'La',
+        'email': 'kola@email.com',
+        'Manufactures_idManufactures': 1,
+        'Manufactures_offices_idManufactures_offices': 1
     }
     # print(manufacture_contact_person)
     add_manufacture_contact_person(manufacture_contact_person)

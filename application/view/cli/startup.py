@@ -110,25 +110,7 @@ def checkout(cart, customer, company):
     user.add_address(country, state, city, zipcode, address)
 
     supplier = Supplier(cart.checkout_product)
-    supplier.present()
-    #print("This is the supplier/suppliers of your product")
-    #supplier_name = []
-    #for product in cart.checkout_product:
-        #products = get_specific_products(product_name=product.product_name)
-        #id = products['idProducts']
-        #suppliers = get_specific_suppliers(idSuppliers=id)
-        #for supplier in suppliers:
-            #print(supplier['company_name'])
-            #supplier_name.append(supplier['company_name'])
-    #running = True
-    #while running:
-        #choice = input('Which do you choose? ')
-        #if choice in supplier_name:
-            #print(f'Thanks for using {choice}')
-            #running = False
-        #else:
-            #print(f'Your {choice} is misspelled or it does not exist, try again')
-
+    id_supplier = supplier.present()
 
     date_format = "%Y-%m-%d"
     requireddate_str = input("Do you have a required date[format YYYY-mm-dd]: ").strip()
@@ -140,15 +122,15 @@ def checkout(cart, customer, company):
     else:
         customer.packages.append(Package(cart.checkout_product,comments=comment))
 
-    session_commit(customer, user, company)
+    session_commit(customer, user, company, id_supplier)
 
-def session_commit(customer, user, company):
+def session_commit(customer, user, company, id_supplier):
     if customer.priv_or_corp == 2:
         company.commit()
-        customer.commit(user.address[0], corp=company)
+        customer.commit(user.address[0], id_supplier, corp=company)
     else:
         user.commit()
-        customer.commit(user.address[0], private=user)
+        customer.commit(user.address[0], id_supplier, private=user)
 
 
 if __name__ == '__main__':

@@ -46,6 +46,7 @@ def test_add_manufacture():
 
     manufacture = {
         'company_name': manufacture_list[0],
+        'number_head_office': 1
     }
     # print(manufacture)
     add_manufacture(manufacture)

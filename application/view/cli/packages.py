@@ -24,9 +24,10 @@ class Package:
     def dict_orders(self):
         return {'purchase_date':self.purchase_date, 'requireddate': self.requireddate, 'status': self.status, 'comments': self.comments}
 
-    def commit(self, customer_id):
+    def commit(self, customer_id, supplier_id):
         order = self.dict_orders()
         order['Customers_idCustomers'] = customer_id
+        order['supplier_id'] = supplier_id
         create_orders(order)
 
         orders = get_specific_orders(Customers_idCustomers=order['Customers_idCustomers'], purchase_date=order['purchase_date'])[0]
