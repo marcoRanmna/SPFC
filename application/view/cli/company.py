@@ -1,8 +1,7 @@
 from application.view.cli.persons import Person
-from application.bll.company_controller import create_companies
+from application.bll.company_controller import create_companies, get_specific_companies
 from application.bll.company_contact_employees_controller import create_company_contact_employees
-from application.dll.db.db import session
-from application.dll.models import Company as TableCompany
+
 
 class Company:
     def __init__(self, corp_name, corp_email, corp_phone):
@@ -18,7 +17,8 @@ class Company:
     def commit(self):
         print(self.company_dict())
         create_companies(self.company_dict())
-        corp = session.query(TableCompany).filter_by(company_name=self.corp_name, phone_number=self.corp_phone, email=self.corp_email).first()
+        corp = get_specific_companies(company_name=self.corp_name, phone_number=self.corp_phone, email=self.corp_email)[0]
+
         for person in self.contact_persons:
             pd = person.dict()
             pd['Company_idContactPersons'] = corp.idContactPersons

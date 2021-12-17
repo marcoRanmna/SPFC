@@ -113,7 +113,7 @@ class GenerateSQL:
                 'product_stored': randint(min_limit+1, max_limit),
                 'product_min_limit': min_limit,
                 'products_max_limit': max_limit,
-                'storage_idstorage': choice(facility_storage_id)
+                'Storage_idstorage': choice(facility_storage_id)
             }
             create_product_storages(product_storages)
 
@@ -335,7 +335,6 @@ class GenerateSQL:
                 'purchase_price': float(randint(10, 10000)),
                 'quality_rating': randint(1, 10)
             }
-            print(product_has_manufacture)
             create_product_has_manufacture(product_has_manufacture)
 
     def generate_all(self):
@@ -347,7 +346,6 @@ class GenerateSQL:
             populate.product('product.csv', 8) 
             populate.offices('adresses.csv', 'company.csv', 4) 
             populate.employees('person.csv', 8) 
-            populate.suppliers('adresses.csv', 'company.csv', 'person.csv', 5) 
             populate.suppliers('adresses.csv', 'company.csv', 'person.csv', 5) 
             populate.suppliers_contactpersons('person.csv', 8) 
             populate.manufactures_extd('company.csv', 'adresses.csv', 'person.csv', 5) 

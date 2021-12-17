@@ -4,6 +4,8 @@ from application.dll.repository import manufacture_contact_person_repository as 
 def get_all_manufacture_contact_person():
     return manufacture_contact_person_r.get_all_manufacture_contact_person()
 
+def get_specific_manufacture_contact_person(idManufactures_contact_person=None, phone_number=None, first_name=None, last_name=None, email=None, Manufactures_idManufactures=None, Manufactures_offices_idManufactures_offices=None):
+    return manufacture_contact_person_r.get_specific_manufacture_contact_person(idManufactures_contact_person, phone_number, first_name, last_name, email, Manufactures_idManufactures, Manufactures_offices_idManufactures_offices)
 
 def create_manufacture_contact_person(manufacture_contact_person):
     manufacture_contact_person_r.create_manufacture_contact_person(manufacture_contact_person)

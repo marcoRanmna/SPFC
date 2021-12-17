@@ -13,8 +13,6 @@ def get_specific_products(idProducts=None, product_name=None, product_number=Non
 
 
 def create_products(product):
-    #print(product['product_name'], product['product_number'], product['description'], product['sell_price'])
-    #product = Product(product_name=product['product_name'], product_number=product['product_number'], description=product['description'], sell_price=product['sell_price'])
     product = Product(**product)
     session.add(product)
     session.commit()

@@ -13,8 +13,6 @@ def get_specific_manufacture_contact_person(idManufactures_contact_person=None, 
 
 
 def create_manufacture_contact_person(manufacture_contact_person):
-    #print(manufacture_contact_person['phone_number'], manufacture_contact_person['first_name'], manufacture_contact_person['last_name'], manufacture_contact_person['email'])
-    #manufacture_contact_person = ManufactureContactPerson(phone_number=manufacture_contact_person['phone_number'], first_name=manufacture_contact_person['first_name'], last_name=manufacture_contact_person['last_name'], email=manufacture_contact_person['email'])
     manufacture_contact_person = ManufactureContactPerson(**manufacture_contact_person)
     session.add(manufacture_contact_person)
     session.commit()

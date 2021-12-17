@@ -13,7 +13,6 @@ def get_specific_storage(idstorage=None, adress=None, zipcode=None, city=None, s
 
 
 def create_storage(storage):
-    #storage_facility = Storage(adress=storage['address'], zipcode=storage['zipcode'], city=storage['city'], state=storage['state'], country=storage['country'])
     storage_facility = Storage(**storage)
     session.add(storage_facility)
     session.commit()
