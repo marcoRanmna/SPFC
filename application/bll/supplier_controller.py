@@ -5,5 +5,9 @@ def get_all_suppliers():
     return supplier_r.get_all_suppliers()
 
 
+def get_specific_suppliers():
+    return get_specific_suppliers()
+
+
 def create_suppliers(supplier):
     supplier_r.create_suppliers(supplier)

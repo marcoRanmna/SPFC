@@ -1,4 +1,6 @@
 from application.dll.models import Product, Supplier
+from application.bll.supplier_controller import get_all_suppliers
+from application.bll.product_controller import get_all_products
 from application.view.cli.newcustomer import Customer
 from application.view.cli.producthandler import ProductsHandler
 from application.view.cli.cart import Cart
@@ -113,7 +115,7 @@ def checkout(cart, customer, company):
     print("This is the supplier/suppliers of your product")
     supplier_name = []
     for product in cart.checkout_product:
-        products = session.query(Product).filter_by(product_name=product).first()
+        products = get_all_suppliers((Product).filter_by(product_name=product).first())
         id = products['idProducts']
         suppliers = session.query(Supplier).filter_by(Products_idProducts=id).first()
         for supplier in suppliers:
