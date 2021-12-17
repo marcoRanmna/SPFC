@@ -3,12 +3,7 @@ from application.dll.models import CarModel
 
 
 def get_all_car_models():
-    #return session.query(CarModel).all()
-    specific = session.query(CarModel).all()
-    #return session.query(CarModel).filter(CarModel.car_model_year.isnot(None))
-    res = list(filter(None, specific))
-    print(str(res))
-    return res
+    return session.query(CarModel).all()
 
 
 def get_specific_car_models(idcomponent_model=None, car_brand=None, car_model=None, car_model_year=None):
