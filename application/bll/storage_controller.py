@@ -2,6 +2,7 @@ from application.dll.repository import storage_repository as storage_r
 from application.mongo_dll.repository import storage_repository
 from application.bll import mongo_or_mysql
 
+
 def get_all_storage():
     if mongo_or_mysql == False:
         return storage_r.get_all_storage()
