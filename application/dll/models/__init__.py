@@ -178,10 +178,10 @@ class ManufactureContactPerson(Base):
     __tablename__ = 'Manufactures_contact_person'
 
     idManufactures_contact_person = Column(Integer, primary_key=True)
-    phone_number = Column(String(45), nullable=False, unique=True)
+    phone_number = Column(String(45), nullable=False)
     first_name = Column(String(45), nullable=False)
     last_name = Column(String(45), nullable=False)
-    email = Column(String(100), nullable=False, unique=True)
+    email = Column(String(100), nullable=False)
     Manufactures_idManufactures = Column(Integer, ForeignKey('Manufactures.idManufactures'))
     Manufactures_offices_idManufactures_offices = Column(Integer, ForeignKey('Manufactures_offices.idManufactures_offices'), nullable=True)
     manufactures = relationship('Manufacture', back_populates='contact_person')
@@ -195,7 +195,7 @@ class ManufactureOffice(Base):
     __tablename__ = 'Manufactures_offices'
 
     idManufactures_offices = Column(Integer, primary_key=True)
-    phone = Column(String(45), nullable=False, unique=True)
+    phone = Column(String(45), nullable=False)
     adress = Column(String(45), nullable=False)
     country = Column(String(45), nullable=False)
     zipcode = Column(String(45), nullable=False)
@@ -219,6 +219,7 @@ class Order(Base):
     shippeddate = Column(Date)
     status = Column(String(45), nullable=False)
     comments = Column(Text)
+    supplier_id = Column(Integer, nullable=False)
 
     customers = relationship('Customer', back_populates='orders')
     orderdetails = relationship('Orderdetail', back_populates='orders')
@@ -333,6 +334,7 @@ class Supplier(Base):
     email = Column(String(100), nullable=False)
     phone = Column(String(45), nullable=False)
     country = Column(String(45), nullable=False)
+    state = Column(String(45), nullable=False)
     zipcode = Column(String(45), nullable=False)
     city = Column(String(45), nullable=False)
     adress = Column(String(100), nullable=False)
