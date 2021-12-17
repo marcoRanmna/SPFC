@@ -167,7 +167,7 @@ class GenerateSQL:
                 'adress': office_list[0],
                 'state': office_list[3],
                 'country': office_list[4],
-                'zipcode': int(office_list[1].replace(" ", "")),
+                'zipcode': office_list[1],
                 'Storage_idOffice_storage': choice(facility_storage_id)
             }
             create_offices(offices)
@@ -221,6 +221,7 @@ class GenerateSQL:
                 'email': person_line[2],
                 'phone': person_line[3],
                 'country': supplier_list[4],
+                'state': supplier_list[3],
                 'zipcode': supplier_list[1],
                 'city': supplier_list[2],
                 'adress': supplier_list[0],
