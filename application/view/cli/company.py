@@ -1,4 +1,3 @@
-from application.view.cli.persons import Person
 from application.bll.company_controller import create_companies, get_specific_companies
 from application.bll.company_contact_employees_controller import create_company_contact_employees
 

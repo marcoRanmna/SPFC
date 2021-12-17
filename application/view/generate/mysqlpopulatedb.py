@@ -15,8 +15,8 @@ from application.bll.manufacture_office_controller import get_all_manufacture_of
 class GenerateSQL:
     def __init__(self):
         working_path = path.dirname(path.realpath(__file__))
-        working_path = working_path.split('SPFC')
-        self.data_path = working_path[0] + "SPFC/application/dll/repository/data/"
+        working_path = working_path.split('PyCharm')
+        self.data_path = working_path[0] + "PyCharm/application/dll/repository/data/"
         self.phone_numbers = set()
 
     def filecomplete(self, filecsv): 

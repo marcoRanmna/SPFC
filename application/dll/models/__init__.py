@@ -197,6 +197,7 @@ class ManufactureOffice(Base):
     idManufactures_offices = Column(Integer, primary_key=True)
     phone = Column(String(45), nullable=False)
     adress = Column(String(45), nullable=False)
+    city = Column(String(45), nullable=False)
     country = Column(String(45), nullable=False)
     zipcode = Column(String(45), nullable=False)
     state = Column(String(45), nullable=False)
@@ -345,7 +346,7 @@ class Supplier(Base):
     supplier_contact_person = relationship('SupplierContactPerson', back_populates='suppliers')
 
     def __repr__(self):
-        return f'{self.company_name}, {self.email}, {self.phone}, {self.country} {self.zipcode}, {self.city}, {self.adress}'
+        return f'{self.Products_idProducts}, {self.company_name}, {self.email}, {self.phone}, {self.country}, {self.state}, {self.zipcode}, {self.city}, {self.adress}'
 
 
 class AutoOrder(Base):
