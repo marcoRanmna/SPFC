@@ -92,6 +92,7 @@ def convert_manufacture():
                 'state': manufactureoffice.state
             })
         as_dict['manufacture_office'] = manufacture_offices
+        print()
         mongo_manufacture = mm.Manufacture(as_dict)
         mongo_manufacture.save()
 
