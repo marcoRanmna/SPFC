@@ -1,6 +1,8 @@
 from application.bll.component_model_controller import get_specific_car_models
 from application.bll.product_controller import get_specific_products, get_all_products
 from application.bll.product_storage_controller import get_specific_product_storages
+from application.bll.orders_controller import get_specific_orders
+from application.bll.orderdetails_controller import get_specific_orderdetails
 
 class Productquery:
 
@@ -35,6 +37,10 @@ class Productquery:
                 setattr(product, 'quantity', stored.product_stored)
                 product_list.append(product)
         return product_list
+    
+    @classmethod
+    def get_all_customers_orders(cls, idCustomers):
+        return get_specific_orders(Customers_idCustomers=idCustomers)
 
 
 class ProductsHandler(Productquery):
@@ -47,9 +53,22 @@ class ProductsHandler(Productquery):
 
     def ls(self):
         for i, product in enumerate(self.customer_products):
-            print("+"+("-"*25)+"+")
-            print("|", f"{product.product_name}     Left: {product.quantity}".ljust(23), "|")
-            print("|", f"Price {product.sell_price} sek".ljust(23), "|")
-            print("|", f"{product.description}".ljust(23), "|")
-            print("+"+("-"*25)+"+")
+            print("+"+("-"*35)+"+")
+            print("|", f"{product.product_name}  Left: {product.quantity}".ljust(33), "|")
+            print("|", f"Price {product.sell_price} sek".ljust(33), "|")
+            print("|", f"{product.description}".ljust(33), "|")
+            print("+"+("-"*35)+"+")
+
+    def show_orders(self, customer_obj):
+        for orders in super().get_all_customers_orders(customer_obj.idCustomers):
+            print("+"+("-"*35)+"+")
+            print("|", f"Purchased: {orders.purchase_date}".ljust(33), "|")
+            print("|", f"Status: {orders.status}".ljust(33), "|")
+            for orderdetail in get_specific_orderdetails(Orders_idOrders=orders.idOrders):
+                products = get_specific_products(product_number=orderdetail.product_number)[0]
+                print("|", f"Product: {products.product_name}".ljust(33), "|")
+                print("|", f"Amount: {orderdetail.quantityordered}".ljust(33), "|")
+                print("|", f"Price {orderdetail.price}".ljust(33), "|")
+            print("+"+("-"*35)+"+")
+
 
