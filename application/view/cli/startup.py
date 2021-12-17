@@ -1,11 +1,10 @@
-from application.bll.supplier_controller import get_specific_suppliers
-from application.bll.product_controller import get_specific_products
 from application.view.cli.newcustomer import Customer
 from application.view.cli.producthandler import ProductsHandler
 from application.view.cli.cart import Cart
 from application.view.cli.persons import Person
 from application.view.cli.company import Company
 from application.view.cli.packages import Package
+from application.view.cli.suppliers import Supplier
 from datetime import datetime
 
 def introduction():
@@ -110,23 +109,25 @@ def checkout(cart, customer, company):
     address = input("Address: ")
     user.add_address(country, state, city, zipcode, address)
 
-    print("This is the supplier/suppliers of your product")
-    supplier_name = []
-    for product in cart.checkout_product:
-        products = get_specific_products(product_name=product)
-        id = products['idProducts']
-        suppliers = get_specific_suppliers(idSuppliers=id)
-        for supplier in suppliers:
-            print(supplier['company_name'])
-            supplier_name.append(supplier['company_name'])
-    running = True
-    while running:
-        choice = input('Which do you choose? ')
-        if choice in supplier_name:
-            print(f'Thanks for using {choice}')
-            running = False
-        else:
-            print(f'Your {choice} is misspelled or it does not exist, try again')
+    supplier = Supplier(cart.checkout_product)
+    supplier.present()
+    #print("This is the supplier/suppliers of your product")
+    #supplier_name = []
+    #for product in cart.checkout_product:
+        #products = get_specific_products(product_name=product.product_name)
+        #id = products['idProducts']
+        #suppliers = get_specific_suppliers(idSuppliers=id)
+        #for supplier in suppliers:
+            #print(supplier['company_name'])
+            #supplier_name.append(supplier['company_name'])
+    #running = True
+    #while running:
+        #choice = input('Which do you choose? ')
+        #if choice in supplier_name:
+            #print(f'Thanks for using {choice}')
+            #running = False
+        #else:
+            #print(f'Your {choice} is misspelled or it does not exist, try again')
 
 
     date_format = "%Y-%m-%d"
