@@ -340,7 +340,7 @@ class GenerateSQL:
 
     def generate_all(self):
         warning = input("Are you sure?[Warning y/n]: ").strip()
-        if warning == 'y'
+        if warning == 'y':
             populate.storage('adresses.csv', 2) 
             populate.component_model('car.csv', 2) 
             populate.productstored(5) 

@@ -1,3 +1,5 @@
+from application.dll.models import Product, Supplier
+from application.dll.db.db import session
 class Cart:
     def __init__(self, customer):
         self.checkout_product = []
@@ -18,7 +20,7 @@ class Cart:
                 self.customer.add_carinfo()
                 break
             else:
-                print("Try again, invalide name on product!")
+                print("Try again, invalid name on product!")
 
     def price(self):
         return sum(product.sell_price for product in self.checkout_product)
