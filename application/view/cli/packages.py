@@ -1,6 +1,3 @@
-#from application.dll.db.db import session
-#from application.dll.models import Order
-
 from datetime import datetime
 from application.bll.orders_controller import create_orders, get_specific_orders
 from application.bll.orderdetails_controller import create_orderdetails
@@ -32,7 +29,6 @@ class Package:
         order['Customers_idCustomers'] = customer_id
         create_orders(order)
 
-        #orders = session.query(Order).filter_by(Customers_idCustomers=order['Customers_idCustomers'], purchase_date=order['purchase_date']).first()
         orders = get_specific_orders(Customers_idCustomers=order['Customers_idCustomers'], purchase_date=order['purchase_date'])[0]
 
         orderdetail = (orders.idOrders, customer_id)
