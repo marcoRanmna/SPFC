@@ -13,11 +13,11 @@ def view_company_contact_employees():
 
 def add_company_contact_employees():
     company_contact_employees = {
-        'Company_idContactPersons': '',
-        'first_name': '',
-        'last_name': '',
-        'phone': '',
-        'email': ''
+        'Company_idContactPersons': 1,
+        'first_name': 'bo',
+        'last_name': 'ek',
+        'phone': '080823402340',
+        'email': 'bo@email.com'
     }
     create_company_contact_employees(company_contact_employees)
 

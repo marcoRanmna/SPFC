@@ -13,6 +13,7 @@ def get_specific_company_contact_employees(idcompany_contact_employees=None, Com
 
 
 def create_company_contact_employees(company_contact_employees):
-    company_contact_employees = CompanyContactEmployee(Company_idContactPersons=company_contact_employees['Company_idContactPersons'],first_name=company_contact_employees['first_name'],last_name=company_contact_employees['last_name'],phone=company_contact_employees['phone'],email=company_contact_employees['email'])
+    #company_contact_employees = CompanyContactEmployee(Company_idContactPersons=company_contact_employees['Company_idContactPersons'],first_name=company_contact_employees['first_name'],last_name=company_contact_employees['last_name'],phone=company_contact_employees['phone'],email=company_contact_employees['email'])
+    company_contact_employees = CompanyContactEmployee(**company_contact_employees)
     session.add(company_contact_employees)
     session.commit()

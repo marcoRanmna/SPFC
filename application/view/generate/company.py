@@ -26,5 +26,5 @@ def delete_company():
 
 
 if __name__ == '__main__':
-    #add_companies()
-    view_companies()
+    add_companies()
+    #view_companies()

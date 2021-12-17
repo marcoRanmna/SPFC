@@ -13,7 +13,8 @@ def get_specific_companies(idContactPersons=None, company_name=None, phone_numbe
 
 
 def create_companies(companies):
-    companies = Company(company_name=companies['company_name'], phone_number=companies['phone_number'], email=companies['email'])
+    #companies = Company(company_name=companies['company_name'], phone_number=companies['phone_number'], email=companies['email'])
+    companies = Company(**companies)
     session.add(companies)
     session.commit()
 

@@ -30,16 +30,17 @@ def convert_customer():
         as_dict = copy(customer.__dict__)
         del as_dict['_sa_instance_state']
 
-        private_person = []
+        private_persons = []
         for privateperson in customer.private_persons:
-            private_person.append({
+            private_persons.append({
                 'first_name': privateperson.first_name,
                 'last_name': privateperson.last_name,
                 'phone': privateperson.phone,
                 'email': privateperson.email
             })
-        if len(private_person) > 0:
-            as_dict['private_person'] = private_person
+        if len(private_persons) > 0:
+            as_dict['private_person'] = private_persons
+        print()
 
         car_info = []
         for carinfo in customer.car_info:
@@ -72,15 +73,15 @@ def convert_manufacture():
         as_dict = copy(manufacture.__dict__)
         del as_dict['_sa_instance_state']
 
-        manufacture_contact_person = []
-        for manufacturecontactperson in manufacture.manufacture_contact_person:
-            manufacture_contact_person.append({
+        contact_person = []
+        for manufacturecontactperson in manufacture.contact_person:
+            contact_person.append({
                 'phone_number': manufacturecontactperson.phone_number,
                 'first_name': manufacturecontactperson.first_name,
                 'last_name': manufacturecontactperson.last_name,
                 'email': manufacturecontactperson.email
             })
-        as_dict['contact_person'] = manufacture_contact_person
+        as_dict['contact_person'] = contact_person
 
         manufacture_offices = []
         for manufactureoffice in manufacture.manufacture_offices:
@@ -137,13 +138,13 @@ def convert_product():
             })
         as_dict['car_model'] = component_model
 
-        products_has_manufactures = []
-        for producthasmanufacture in product.product_has_manufactures:
-            products_has_manufactures.append({
+        manufacture = []
+        for producthasmanufacture in product.manufacture:
+            manufacture.append({
                 'purchase_price': producthasmanufacture.purchase_price,
                 'quality_rating': producthasmanufacture.quality_rating
             })
-        as_dict['manufacture_info'] = products_has_manufactures
+        as_dict['manufacture_info'] = manufacture
         mongo_product = mm.Product(as_dict)
         mongo_product.save()
 
