@@ -15,9 +15,10 @@ from application.bll.manufacture_office_controller import get_all_manufacture_of
 class GenerateSQL:
     def __init__(self):
         working_path = path.dirname(path.realpath(__file__))
-        working_path = working_path.split('PyCharm')
-        self.data_path = working_path[0] + "PyCharm/application/dll/repository/data/"
+        working_path = working_path.split('/application')
+        self.data_path = working_path[0] + "/application/dll/repository/data/"
         self.phone_numbers = set()
+        print(self.data_path)
 
     def filecomplete(self, filecsv): 
         filecsv = self.data_path + filecsv
@@ -294,6 +295,7 @@ class GenerateSQL:
             manufacture_office = {
                 'phone': self.phone_num(10),
                 'adress': manufactures_office_list[0],
+                'city': manufactures_office_list[2],
                 'country': manufactures_office_list[4],
                 'zipcode': manufactures_office_list[1],
                 'state': manufactures_office_list[3],
@@ -341,15 +343,15 @@ class GenerateSQL:
     def generate_all(self):
         warning = input("Are you sure?[Warning y/n]: ").strip()
         if warning == 'y':
-            populate.storage('adresses.csv', 2) 
-            populate.component_model('car.csv', 2) 
-            populate.productstored(5) 
-            populate.product('product.csv', 8) 
-            populate.offices('adresses.csv', 'company.csv', 4) 
-            populate.employees('person.csv', 8) 
-            populate.suppliers('adresses.csv', 'company.csv', 'person.csv', 5) 
-            populate.suppliers_contactpersons('person.csv', 8) 
-            populate.manufactures_extd('company.csv', 'adresses.csv', 'person.csv', 5) 
+            #populate.storage('adresses.csv', 2) 
+            #populate.component_model('car.csv', 2) 
+            #populate.productstored(5) 
+            #populate.product('product.csv', 8) 
+            #populate.offices('adresses.csv', 'company.csv', 4) 
+            #populate.employees('person.csv', 8) 
+            #populate.suppliers('adresses.csv', 'company.csv', 'person.csv', 5) 
+            #populate.suppliers_contactpersons('person.csv', 8) 
+            #populate.manufactures_extd('company.csv', 'adresses.csv', 'person.csv', 5) 
             populate.product_has_manufactures(2) 
             #populate.deliveryadress('adresses.csv', 2) 
 

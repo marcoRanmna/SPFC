@@ -5,6 +5,7 @@ from application.view.cli.persons import Person
 from application.view.cli.company import Company
 from application.view.cli.packages import Package
 from application.view.cli.suppliers import Supplier
+from application.view.cli.ourcompany import Employee
 from datetime import datetime
 
 def introduction():
@@ -18,7 +19,7 @@ def introduction():
 
     choice = input("\nEnter: ")
 
-    if choice.isdigit and -1 < int(choice) < len(message):
+    if choice.isdigit and -1 < int(choice) < (len(message)+1):
         options[message[int(choice)-1]]()
 
 def private_or_company():
@@ -34,7 +35,7 @@ def private_or_company():
             print("Enter the number in ( x )")
     return priv_or_corp
 
-def new_customer():
+def new_customer(employee=None):
     print("\n======= Nice to meet you new customer =======\n")
     priv_or_corp = private_or_company()
     if priv_or_corp == "2":
@@ -43,10 +44,12 @@ def new_customer():
         newcompany = None
     customer = Customer.carintroduction(priv_or_corp)
     avliable_product = ProductsHandler(customer)
-    shop(customer, avliable_product, newcompany)
 
+    if employee != None:
+        shop(customer, avliable_product, newcompany, employee=employee)
+    shop(customer, avliable_product, newcompany, employee=employee)
 
-def old_customer():
+def old_customer(employee=None):
     print("\n======= Welcome Back Meatbag! =======\n")
     priv_or_corp = private_or_company()
     print("So you are back again for shitty service")
@@ -67,12 +70,29 @@ def old_customer():
     if x == 'y':
         avliable_product = ProductsHandler(oldcustomer)
         avliable_product.show_orders(oldcustomer.customer_obj)
+
+    if employee != None:
+        shop(oldcustomer, avliable_product, oldcompany, employee=employee)
+
     shop(oldcustomer, avliable_product, oldcompany)
 
-def ourCompany():
-    pass
+def ourCompany(employee=None):
+    print("\n======= Evil Corp =======\n")
+    print("Welcome slave employee")
+    print("Remember the customer is always right and you have no rights nor union :) Muhahaha")
+    employee = Employee.whoareyou()
+    print(f"So {employee.employee_obj.first_name} {employee.employee_obj.last_name} who do you need to enter into system?")
+    while True:
+        action = input("(1) New Customer\n(2) Old Customer \n> ")
+        if action == "1":
+            new_customer(employee=employee)
+            break
+        elif action == "2":
+            old_customer(employee=employee)
+            break
+ 
 
-def shop(customer, avliable_product, company):
+def shop(customer, avliable_product, company, employee=None):
     cart = Cart(customer)
 
     def user_search():
@@ -88,7 +108,10 @@ def shop(customer, avliable_product, company):
     while True:
         print("Would you like:\n","(1) add product to cart\n", 
                 "(2) retry search\n","(3) Proceed to checkout line\n",
-                "(4) Try another car\n", "(e) Exit")
+                "(4) Try another car\n")
+        if employee != None:
+            print(" (5) Show manufacures relevant to products")
+        print(" (e) Exit")
         action = input("Action: ").strip()
 
         if action == "1":
@@ -103,6 +126,8 @@ def shop(customer, avliable_product, company):
             customer = Customer.carintroduction()
             avliable_product = ProductsHandler(customer)
             user_search()
+        elif action == "5" and employee != None:
+            employee.search_product(cart.checkout_product)
         elif action == "e":
             break
         else:

@@ -1,9 +1,9 @@
-from datetime import datetime
 from application.view.cli.producthandler import ProductsHandler
 from application.bll.customer_controller import create_customer, get_specific_customers
 from application.bll.carinfo_controller import create_carinfo, get_specific_carinfo
 from application.bll.private_customer_controller import get_specific_private_customers
 from application.bll.delivery_adress_controller import get_specific_delivery_adress
+from datetime import datetime
 
 class Customer:
     def __init__(self, priv_or_corp, car_id, brand, model, year, customer_obj=None):
