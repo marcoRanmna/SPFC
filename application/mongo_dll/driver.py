@@ -31,6 +31,7 @@ def convert_customer():
         del as_dict['_sa_instance_state']
 
         private_persons = []
+        print(customer.private_persons)
         for privateperson in customer.private_persons:
             private_persons.append({
                 'first_name': privateperson.first_name,
@@ -38,9 +39,7 @@ def convert_customer():
                 'phone': privateperson.phone,
                 'email': privateperson.email
             })
-        if len(private_persons) > 0:
-            as_dict['private_person'] = private_persons
-        print()
+        as_dict['private_person'] = private_persons
 
         car_info = []
         for carinfo in customer.car_info:
@@ -83,16 +82,16 @@ def convert_manufacture():
             })
         as_dict['contact_person'] = contact_person
 
-        manufacture_offices = []
-        for manufactureoffice in manufacture.manufacture_offices:
-            manufacture_offices.append({
+        office = []
+        for manufactureoffice in manufacture.office:
+            office.append({
                 'phone': manufactureoffice.phone,
                 'adress': manufactureoffice.adress,
                 'country': manufactureoffice.country,
                 'zipcode': manufactureoffice.zipcode,
                 'state': manufactureoffice.state
             })
-        as_dict['manufacture_office'] = manufacture_offices
+        as_dict['manufacture_office'] = office
         mongo_manufacture = mm.Manufacture(as_dict)
         mongo_manufacture.save()
 
@@ -110,6 +109,7 @@ def convert_order():
                 'quantityordered': orderdetail.quantityordered,
                 'price': orderdetail.price
             })
+        as_dict['order_details'] = orderdetails
         mongo_order = mm.Order(as_dict)
         mongo_order.save()
 
@@ -198,10 +198,11 @@ def convert_office():
 
 
 if __name__ == '__main__':
-    convert_company()
+    #convert_company()
     convert_customer()
-    convert_manufacture()
-    convert_order()
+    #convert_manufacture()
+    #convert_order()
     convert_product()
     convert_supplier()
-    convert_storage()
+    #convert_storage()
+    #convert_office()
